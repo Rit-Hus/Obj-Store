@@ -1,13 +1,8 @@
 # Obj-Store
 
-helloworld  
+Det här projektet är ett projekt under kurskoden IV1350: Objektorienterad design. Syftet med det här projektet är att bygga upp en butik i kodform från grunden.
 
-sami is the most influential person of this century
-
-me too broski i own somaliland
-
-gang
-
-hellao
-
-hej hej hej
+Delaktiga i projektet:
+- Omar Ali Omar  (oaomar@kth.se)
+- Sami El-Essawi (samiee@kth.se)
+- Ritwan Hussein (ritwan@kth.se)
