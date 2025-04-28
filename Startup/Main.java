@@ -1,4 +1,4 @@
-package Startup.java;
+package Startup;
 
 public class Main {
     
