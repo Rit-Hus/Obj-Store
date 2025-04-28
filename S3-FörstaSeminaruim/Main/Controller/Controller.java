@@ -1,6 +1,6 @@
 package Controller;
 
-import Ineregation.SlaeDTO;
+import Integration.SaleDTO;
 
 public class Controller {
  
@@ -15,7 +15,7 @@ public class Controller {
     return null;
   }
   
-  public SlaeDTO scanitem(String itemID,int quantity){
+  public SaleDTO scanitem(String itemID,int quantity){
     return null;
   }
 
