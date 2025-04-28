@@ -47,7 +47,7 @@ public class Recipt {
 
         System.out.println("Printing receipt...");
         System.out.println("Item Name: " + receipt.itemName);
-        System.out.println("Quantity: " + receipt.itemQuantity);
+        System.out.println("Product Amount: " + receipt.itemQuantity);
         System.out.println("Total Price: " + receipt.totalPrice);
         System.out.println("Total Paid: " + receipt.amountPaid);
         System.out.println("Change: " + receipt.totalChange);
