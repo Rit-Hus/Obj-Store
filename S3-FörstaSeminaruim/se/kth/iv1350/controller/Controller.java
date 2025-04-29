@@ -1,6 +1,6 @@
-package Controller;
+package se.kth.iv1350.controller;
 
-import Integration.SaleDTO;
+import integration.SaleDTO;
 
 public class Controller {
  

@@ -1,4 +1,4 @@
-package Integration;
+package integration;
 
 public class ExternalAccountingSystem {
     

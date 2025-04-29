@@ -1,4 +1,4 @@
-package Startup;
+package startup;
 
 public class Main {
     

@@ -1,10 +1,9 @@
-package Model;
+package model;
 
-import Integration.SaleDTO;
+import integration.SlaeDTO;
 
-public class Receipt {
+public class Recipt {
 
-    
     private String itemName;
     private int itemQuantity;
     private int itemPrice;
@@ -24,7 +23,7 @@ public class Receipt {
      *                   product name, quantity, price, and total price.
      */
 
-    public Receipt(int paidAmount, SaleDTO saleDTO) {
+    public Recipt(int paidAmount, SlaeDTO saleDTO) {
         this.amountPaid = paidAmount;
 
         this.itemName = saleDTO.getProductName();
@@ -44,7 +43,7 @@ public class Receipt {
      *                to be printed.
      */
 
-    public void printReceipt(Receipt receipt) {
+    public void printReceipt(Recipt receipt) {
 
         System.out.println("Printing receipt...");
         System.out.println("Item Name: " + receipt.itemName);

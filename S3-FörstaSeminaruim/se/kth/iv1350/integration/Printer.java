@@ -1,6 +1,6 @@
-package Integration;
+package integration;
 
-import Model.Receipt;
+import model.Receipt;
 
 public class Printer {
 
