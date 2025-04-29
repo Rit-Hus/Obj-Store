@@ -1,6 +1,6 @@
 package Integration;
 
-import Model.Receipt;
+import se.kt.iv1350.codestore.model.Receipt;
 
 public class Printer {
 
