@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> fb992adccfcc559e1e925abf8e78875c59b79009
-
 package se.kth.iv1350.model;
 
-import se.kth.iv1350.SaleDTO;
+import se.kth.iv1350.integration.SaleDTO;
 
 public class Receipt {
 

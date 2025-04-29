@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-package se.kth.iv1350.integration;
-
-import se.kth.iv1350.model.receipt;
-=======
-
 package se.kth.iv1350.integration;
 
 import se.kth.iv1350.model.Receipt;
->>>>>>> fb992adccfcc559e1e925abf8e78875c59b79009
+
 
 public class Printer {
 
