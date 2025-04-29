@@ -1,4 +1,4 @@
-package se.kt.iv1350.codestore.model;
+package se.kth.iv1350.codestore.model;
 
 public class Payment {
     private String paymentMethod;

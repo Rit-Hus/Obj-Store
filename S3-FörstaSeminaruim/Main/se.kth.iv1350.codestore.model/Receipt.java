@@ -1,9 +1,10 @@
-package se.kt.iv1350.codestore.model;
+package se.kth.iv1350.codestore.model;
 
-import Ineregation.SlaeDTO;
+import Integration.SaleDTO;
 
-public class Recipt {
+public class Receipt {
 
+    
     private String itemName;
     private int itemQuantity;
     private int itemPrice;
@@ -23,7 +24,7 @@ public class Recipt {
      *                   product name, quantity, price, and total price.
      */
 
-    public Recipt(int paidAmount, SlaeDTO saleDTO) {
+    public Receipt(int paidAmount, SaleDTO saleDTO) {
         this.amountPaid = paidAmount;
 
         this.itemName = saleDTO.getProductName();
@@ -43,7 +44,7 @@ public class Recipt {
      *                to be printed.
      */
 
-    public void printReceipt(Recipt receipt) {
+    public void printReceipt(Receipt receipt) {
 
         System.out.println("Printing receipt...");
         System.out.println("Item Name: " + receipt.itemName);

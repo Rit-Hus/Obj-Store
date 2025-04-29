@@ -1,4 +1,4 @@
-package se.kt.iv1350.codestore.controller;
+package se.kth.iv1350.codestore.controller;
 
 import Integration.SaleDTO;
 
