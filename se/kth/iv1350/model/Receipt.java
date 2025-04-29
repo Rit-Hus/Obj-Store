@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> fb992adccfcc559e1e925abf8e78875c59b79009
 
 package se.kth.iv1350.model;
 
