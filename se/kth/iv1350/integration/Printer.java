@@ -1,12 +1,7 @@
-<<<<<<<< HEAD:S3-FörstaSeminaruim/se/kth/iv1350/integration/Printer.java
-package integration;
 
-import model.Receipt;
-========
-package se.kth.iv1350.codestore.integration;
+package se.kth.iv1350.integration;
 
-import se.kt.iv1350.codestore.model.Receipt;
->>>>>>>> acc30cce604e97b45184ffb58eb6f52d40cb0a6c:S3-FörstaSeminaruim/Main/se.kth.iv1350.codestore.integration/Printer.java
+import se.kth.iv1350.model.Receipt;
 
 public class Printer {
 
