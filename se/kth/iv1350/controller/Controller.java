@@ -1,10 +1,6 @@
-<<<<<<<< HEAD:S3-FörstaSeminaruim/se/kth/iv1350/controller/Controller.java
 package se.kth.iv1350.controller;
-========
-package se.kth.iv1350.codestore.controller;
->>>>>>>> acc30cce604e97b45184ffb58eb6f52d40cb0a6c:S3-FörstaSeminaruim/Main/se.kth.iv1350.codestore.controller/Controller.java
 
-import integration.SaleDTO;
+import se.kth.iv1350.integration.SaleDTO;
 
 public class Controller {
  
