@@ -1,6 +1,6 @@
 package se.kth.iv1350.integration;
 
 
-public class ExternalInvontorySystem {
+public class ExternalInventorySystem {
     
 }
