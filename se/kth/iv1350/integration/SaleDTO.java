@@ -11,7 +11,8 @@ private int productAmount;
 private int saleDate;
 private double pricePerItem;
 private String  productName;
-private ItemDTO itemDTOList[];
+private ItemDTO scanneditemDTOList[];
+
 
 /**
  * Creates a new {@code SaleDTO}, which represents a completed sale.
@@ -21,6 +22,8 @@ private ItemDTO itemDTOList[];
  * @param saleDate The date of the sale (e.g., as an integer timestamp or formatted value).
  * @param productName The name of the sold product.
  * @param pricePerItem The price per single item.
+ * @param itemDTOList An array of {@code ItemDTO} objects representing the items sold in the sale.
+ * @param vat The VAT (Value Added Tax) percentage to be applied.
  */
 
 
@@ -42,7 +45,7 @@ this.productAmount = productAmount;
 this.saleDate = saleDate;
 this.productName = productName;
 this.pricePerItem = pricePerItem;
-this.itemDTOList = new ItemDTO[productAmount];
+this.scanneditemDTOList = itemDTOs;
 
 }
 
@@ -111,10 +114,7 @@ return productName;
  *
  * @return An array of ItemDTO objects.
  */
-public ItemDTO[] getItemDTOList(){
 
-    return itemDTOList;
-}
 
 /**
  * Updates the total price of the sale based on the price per item and VAT.
@@ -125,6 +125,9 @@ public ItemDTO[] getItemDTOList(){
 public void updateTotal(double pricePerItem, int vat){
 this.priceTotal =  (pricePerItem * productAmount) * (1 + vat / 100.0);
 
+}
+
+
 
 
 
@@ -134,5 +137,5 @@ this.priceTotal =  (pricePerItem * productAmount) * (1 + vat / 100.0);
 
 
 
-}
+
 

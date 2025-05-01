@@ -14,6 +14,7 @@ private int quantity;
 private int identifier;
 private String name;
 private String description;
+private ItemDTO next;
 
 
 
@@ -39,6 +40,18 @@ this.description = description;
 
 
 }
+
+
+class nodes{
+
+
+nodes next;
+nodes head;
+
+
+
+}
+
 /* These are getters which helps to keep ItemDTO well encapsulated */
 
 /**
@@ -109,6 +122,9 @@ public String getDescription(){
     return  description;
     
 }
+
+
+
 
 
 }
