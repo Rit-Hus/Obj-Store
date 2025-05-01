@@ -24,6 +24,15 @@ String  productName;
  */
 
 
+/**
+ * Constructor for the SaleDTO class. Initializes the sale details.
+ *
+ * @param priceTotal   The total price of the sale.
+ * @param productAmount The number of products sold.
+ * @param saleDate     The date of the sale.
+ * @param productName  The name of the product sold.
+ * @param pricePerItem The price per item sold.
+ */
 public SaleDTO( double priceTotal, int productAmount,int saleDate, String productName, double pricePerItem){
 
  this.priceTotal  = priceTotal;
@@ -94,7 +103,12 @@ return productName;
 
 
 }
-/*A method to update the total price*/
+/**
+ * Updates the total price of the sale based on the price per item and VAT.
+ *
+ * @param pricePerItem The price per item sold.
+ * @param vat The VAT (Value Added Tax) percentage to be applied.
+ */
 public void updateTotal(double pricePerItem, int vat){
 this.priceTotal =  (pricePerItem * productAmount) * (1 + vat / 100.0);
 
