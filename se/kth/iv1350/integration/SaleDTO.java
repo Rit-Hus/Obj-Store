@@ -10,8 +10,8 @@ public class SaleDTO{
 private int productAmount;
 private int saleDate;
 private double pricePerItem;
-String  productName;
-
+private String  productName;
+private ItemDTO itemDTOs[];
 
 /**
  * Creates a new {@code SaleDTO}, which represents a completed sale.
@@ -40,7 +40,7 @@ this.productAmount = productAmount;
 this.saleDate = saleDate;
 this.productName = productName;
 this.pricePerItem = pricePerItem;
-
+this.itemDTOs = new ItemDTO[productAmount];
 
 }
 
@@ -103,6 +103,17 @@ return productName;
 
 
 }
+
+/**
+ * Gets the array of ItemDTO objects representing the items sold in the sale.
+ *
+ * @return An array of ItemDTO objects.
+ */
+public ItemDTO[] getItemDTOs(){
+
+    return itemDTOs;
+}
+
 /**
  * Updates the total price of the sale based on the price per item and VAT.
  *
