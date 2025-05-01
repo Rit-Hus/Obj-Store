@@ -11,7 +11,7 @@ private int productAmount;
 private int saleDate;
 private double pricePerItem;
 private String  productName;
-private ItemDTO itemDTOs[];
+private ItemDTO itemDTOList[];
 
 /**
  * Creates a new {@code SaleDTO}, which represents a completed sale.
@@ -32,15 +32,17 @@ private ItemDTO itemDTOs[];
  * @param saleDate     The date of the sale.
  * @param productName  The name of the product sold.
  * @param pricePerItem The price per item sold.
+ * @param itemDTOs     An array of ItemDTO objects representing the items sold in the sale.
+ * @param vat         The VAT (Value Added Tax) percentage to be applied.
  */
-public SaleDTO( double priceTotal, int productAmount,int saleDate, String productName, double pricePerItem){
+public SaleDTO( double priceTotal, int productAmount,int saleDate, String productName, double pricePerItem, ItemDTO[] itemDTOs, int vat){
 
  this.priceTotal  = priceTotal;
 this.productAmount = productAmount;
 this.saleDate = saleDate;
 this.productName = productName;
 this.pricePerItem = pricePerItem;
-this.itemDTOs = new ItemDTO[productAmount];
+this.itemDTOList = new ItemDTO[productAmount];
 
 }
 
@@ -105,13 +107,13 @@ return productName;
 }
 
 /**
- * Gets the array of ItemDTO objects representing the items sold in the sale.
+ * Gets the list of ItemDTO objects representing the items sold in the sale.
  *
  * @return An array of ItemDTO objects.
  */
-public ItemDTO[] getItemDTOs(){
+public ItemDTO[] getItemDTOList(){
 
-    return itemDTOs;
+    return itemDTOList;
 }
 
 /**
