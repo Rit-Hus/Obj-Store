@@ -32,7 +32,7 @@ private ItemDTO itemDTOList[];
  * @param saleDate     The date of the sale.
  * @param productName  The name of the product sold.
  * @param pricePerItem The price per item sold.
- * @param itemDTOs     An array of ItemDTO objects representing the items sold in the sale.
+ * @param itemDTOList    An array of ItemDTO objects representing the items sold in the sale.
  * @param vat         The VAT (Value Added Tax) percentage to be applied.
  */
 public SaleDTO( double priceTotal, int productAmount,int saleDate, String productName, double pricePerItem, ItemDTO[] itemDTOs, int vat){
@@ -124,6 +124,9 @@ public ItemDTO[] getItemDTOList(){
  */
 public void updateTotal(double pricePerItem, int vat){
 this.priceTotal =  (pricePerItem * productAmount) * (1 + vat / 100.0);
+
+
+
 
 
 }
