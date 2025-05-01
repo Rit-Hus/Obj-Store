@@ -11,9 +11,9 @@ public class Receipt {
     private int vatForSale;
     private int dateAndTimeOfSale;
 
-    int totalPrice;
-    int amountPaid;
-    int totalChange;
+    private int totalPrice;
+    private int amountPaid;
+    private int totalChange;
 
     /**
      * Constructor that initializes the Recipt object with the provided paid amount
