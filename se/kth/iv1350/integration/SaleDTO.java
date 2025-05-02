@@ -109,11 +109,7 @@ return productName;
 
 }
 
-/**
- * Gets the list of ItemDTO objects representing the items sold in the sale.
- *
- * @return An array of ItemDTO objects.
- */
+ 
 
 
 /**
