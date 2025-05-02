@@ -94,6 +94,6 @@ public class Sale {
         return currentSale;
     }
    
-
+ //skapa item class
 
 }
