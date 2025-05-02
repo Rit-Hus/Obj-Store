@@ -1,5 +1,7 @@
 package se.kth.iv1350.integration;
 
+import java.time.LocalDate;
+
 /**
  * The SaleDTO class represents a completed sale with details such as the total price,
  * product amount, sale date, product name, and price per item.
@@ -8,7 +10,7 @@ package se.kth.iv1350.integration;
 public class SaleDTO{
     private double priceTotal;
 private int productAmount;
-private int saleDate;
+private LocalDate saleDate;
 private double pricePerItem;
 private String  productName;
 private ItemDTO scanneditemDTOList[];
@@ -38,16 +40,20 @@ private ItemDTO scanneditemDTOList[];
  * @param itemDTOList    An array of ItemDTO objects representing the items sold in the sale.
  * @param vat         The VAT (Value Added Tax) percentage to be applied.
  */
-public SaleDTO( double priceTotal, int productAmount,int saleDate, String productName, double pricePerItem, ItemDTO[] itemDTOs, int vat){
+public SaleDTO(LocalDate saleDate, ItemDTO[] itemDTOs){
 
- this.priceTotal  = priceTotal;
-this.productAmount = productAmount;
+ //this.priceTotal  = priceTotal;//pure math
+//this.productAmount = ;//additemtolist will count the items
 this.saleDate = saleDate;
-this.productName = productName;
-this.pricePerItem = pricePerItem;
+//this.productName = productName;
+//this.pricePerItem = pricePerItem; //calculate with pure math and vat //vi återkommer med vat
 this.scanneditemDTOList = itemDTOs;
 
+  
+
 }
+
+
 
 /* These are getters which helps to keep SaleDTO well encapsulated */
 

@@ -1,9 +1,6 @@
 package se.kth.iv1350.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-
-import se.kth.iv1350.integration.ExternalInventorySystem;
 import se.kth.iv1350.integration.ItemDTO;
 import se.kth.iv1350.integration.SaleDTO;
 
@@ -12,6 +9,7 @@ public class Sale {
     private se.kth.iv1350.integration.ItemDTO ItemDTO;
     private ItemDTO[] scannedcart;
     private double  totalAmount;
+    private ItemDTO.Node first;
     /**
     private double  VAT;
     // private ExternalInventorySystem EI; bra att ha
@@ -33,31 +31,44 @@ public class Sale {
     public double getToTalAmount() {
         return this.totalAmount;
     }
-
-
-    /**
-     * Adds an item to the itemDTO
-     * @param ItemDTO the ID of the item to add
-     */
-    public void addItems(ItemDTO cart){
-      int counter =0;
-     while (!.next ==null) { 
-           counter++;
-     }
      
-     ItemDTO[] scanneditems= new ItemDTO[counter];
-     counter=0;
-     for(ItemDTO item: scanneditems ){
-      scanneditems[counter++]=.next;
-      .next.next;
+    
+    public void scanitems(ItemDTO item){
 
-     }
+    ItemDTO.add(item);
 
-     this.scannedcart=scanneditems;
-      //add the list where the saleDTO is created
-      //SaleDTO.updateDTOlist(scanneditems);
 
     }
+
+    /**
+     * Adds an items to the itemDTO list
+     * @param ItemDTO the ID of the item to add
+     */
+     // Head of the linked list
+     
+    public void addItemsTolist() {
+        int count = 0;
+        ItemDTO.Node current = first;
+        ItemDTO.Node next = ItemDTO.getNext();
+        // Count nodes
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+
+        // Populate array
+        ItemDTO[] items = new ItemDTO[count];
+        current = first;
+        int i = 0;
+
+        while (current != null) {
+            items[i++] = current.item;
+            current = current.next;
+        }
+
+        this.scannedcart =items;
+    }
+
     /**
      * Checks if an item has been scanned
      * @param ItemDTO the ID of the item to check
@@ -81,18 +92,11 @@ public class Sale {
      * @return a Receipt object containing information about the sale and payment
      */
 
-    public Receipt endsSale(SaleDTO saleDTO, Payment payment) {
-        return new Receipt(saleDTO, payment);
+    public SaleDTO endsSale() {
+    return new SaleDTO(saleDate,scannedcart);
     }
  
-     /**
-     * Returns a SaleDTO object with information about the sale
-     * @return a SaleDTO object with information about the sale
-     */
-    public SaleDTO getSaleDTO() {
-        SaleDTO currentSale = new SaleDTO(this.VAT, this.items, this.saleDate, this.totalAmount);
-        return currentSale;
-    }
+  
    
  //skapa item class
 

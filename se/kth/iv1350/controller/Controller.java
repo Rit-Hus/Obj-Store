@@ -3,7 +3,9 @@ package se.kth.iv1350.controller;
 import se.kth.iv1350.integration.ExternalAccountingSystem;
 import se.kth.iv1350.integration.ExternalInventorySystem;
 import se.kth.iv1350.integration.ItemDTO;
+import se.kth.iv1350.integration.SaleDTO;
 import se.kth.iv1350.integration.SaleLog;
+import se.kth.iv1350.model.Receipt;
 import se.kth.iv1350.model.Sale;
 
 public class Controller {
@@ -12,6 +14,7 @@ public class Controller {
     private ExternalAccountingSystem aSystem;
     private SaleLog saleLog;
     private Sale sale;
+    private Receipt receipt;
     private ItemDTO cart;
   
 
@@ -29,16 +32,19 @@ public class Controller {
 
   //
   public void scanitem(ItemDTO cart){
-    this.sale.addItems(cart);
+      sale.scanitems(cart);
   }
-
-
+ 
+  public void endScanItem(ItemDTO cart){
+    sale.addItemsTolist();
+}
 
   /** let's come back for this later and cahnge the void. date(24-04-2025)
    * create SaleDTO when done 
    */
-  public void finishSale(double payment){
-
+  public void finishSale(){
+     SaleDTO saledto = sale.endsSale();
+     Receipt receipt = new Receipt(saledto); //vi återkommer
   }
 
 

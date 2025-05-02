@@ -24,8 +24,8 @@ public class Receipt {
      *                   product name, quantity, price, and total price.
      */
 
-    public Receipt(int paidAmount, SaleDTO saleDTO) {
-        this.amountPaid = paidAmount;
+    public Receipt(SaleDTO saleDTO) {
+       // this.amountPaid = paidAmount;
 
         this.itemName = saleDTO.getProductName();
         this.itemQuantity = saleDTO.getProductAmount();

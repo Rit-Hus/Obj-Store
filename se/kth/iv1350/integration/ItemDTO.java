@@ -1,5 +1,9 @@
 package se.kth.iv1350.integration;
 
+import java.lang.classfile.components.ClassPrinter;
+
+import se.kth.iv1350.integration.ItemDTO.Node;
+
 
 
 public class ItemDTO {
@@ -53,15 +57,7 @@ public ItemDTO createProduct( double price,int vat,int quantity,int identifier, 
 
 
 
-class nodes{
 
-
-nodes next;
-nodes head;
-
-
-
-}
 
 /* These are getters which helps to keep ItemDTO well encapsulated */
 
@@ -144,5 +140,45 @@ public ItemDTO createProduct( double price,int vat,int quantity,int identifier, 
 }
 
 
+    public class Node {
+       public ItemDTO item;
+       public  Node next;
+
+        Node(ItemDTO item) {
+            this.item = item;
+            this.next = null;
+        }
+
+        
+   
+
+    }
+
+   
+    private Node first;
+
+   
+    public void add(ItemDTO item) {
+        Node newNode = new Node(item);
+
+        if (first == null) {
+            first = newNode;
+        } else {
+            Node current = first;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    
+     public Node getfirst() {
+        return first;
+    }
+
+    public Node getNext() {
+        return first.next;
+    }
 
 }
