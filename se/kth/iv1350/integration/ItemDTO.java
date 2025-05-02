@@ -135,6 +135,13 @@ public String getDescription(){
 }
 
 
+public ItemDTO createProduct( double price,int vat,int quantity,int identifier, String name, String description){
+
+    ItemDTO item = new ItemDTO(price,vat,quantity,identifier,name,description);
+    return item;
+
+
+}
 
 
 
