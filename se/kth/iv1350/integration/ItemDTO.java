@@ -1,8 +1,7 @@
 package se.kth.iv1350.integration;
 
 import se.kth.iv1350.integration.ItemDTO.Node;
-
-
+import se.kth.iv1350.model.Item;
 public class ItemDTO {
     /**
      * The ItemDTO class represents an item with its details such as price, VAT,
@@ -121,10 +120,16 @@ public String getDescription(){
 }
 
 
-public ItemDTO createProduct(){
-
-    ItemDTO item = new ItemDTO(price,vat,quantity,identifier,name,description);
-    return item;
+public ItemDTO createItemDTO(Item item){
+    price = item.getPrice();
+    description = item.getDescription();
+    vat = item.getVat();
+    name = item.getName();
+    quantity = item.getQuantity();
+    identifier = item.getIdentifier();
+    
+    ItemDTO itemdto = new ItemDTO(price,vat,quantity,identifier,name,description);
+    return itemdto;
 
 
 }
