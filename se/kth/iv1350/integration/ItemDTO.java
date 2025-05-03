@@ -1,9 +1,6 @@
 package se.kth.iv1350.integration;
 
-import java.lang.classfile.components.ClassPrinter;
-
 import se.kth.iv1350.integration.ItemDTO.Node;
-
 
 
 public class ItemDTO {
@@ -46,13 +43,6 @@ this.description = description;
 }
 
 
-public ItemDTO createProduct( double price,int vat,int quantity,int identifier, String name, String description){
-
-    ItemDTO item = new ItemDTO(price,vat,quantity,identifier,name,description);
-    return item;
-
-
-}
 
 
 
@@ -131,7 +121,7 @@ public String getDescription(){
 }
 
 
-public ItemDTO createProduct( double price,int vat,int quantity,int identifier, String name, String description){
+public ItemDTO createProduct(){
 
     ItemDTO item = new ItemDTO(price,vat,quantity,identifier,name,description);
     return item;
