@@ -5,19 +5,19 @@ import se.kth.iv1350.model.Item;
 
 public class View {
 
-    
     public void storeTerminal() {
         Scanner scanner = new Scanner(System.in);
-        Item[] list;
-        list = Item.getItem();
-       
+
+        // Get the list of items
+        Item[] list = Item.getItem();
+
         System.out.println("=== Welcome to the Store Terminal ===");
         System.out.println("Available items:");
 
         for (int i = 0; i < list.length; i++) {
-            System.out.printf("%d. %s", i + 1, list[i]);
+            System.out.printf("%d. %s%n", i + 1, list[i]);
         }
-        
+
         while (true) {
             System.out.print("Enter the item number to purchase (or 100 to checkout): ");
             int choice = scanner.nextInt();
@@ -26,22 +26,15 @@ public class View {
                 break;
             }
 
-            if (choice < 0 || choice > list.length) {
+            if (choice < 1 || choice > list.length) {
                 System.out.println("Invalid item number. Try again.");
-            } 
-            
-            else {
+            } else {
                 int index = choice - 1;
+                System.out.printf("Added %s.%n", list[index]);
             
-                System.out.printf("Added %s. Current total: ", list[index]);
             }
-                
         }
 
-        System.out.printf("Thank you! Your total is: ", 10);
-    }
-
-    private Item[] getItem() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("Thank you! Your total is: 10");
     }
 }
