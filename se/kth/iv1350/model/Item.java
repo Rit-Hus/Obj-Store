@@ -9,7 +9,7 @@ public class Item{
     private int identifier;
     private String name;
     private String description;
-
+    private Item[] items;
 
     public Item(double price,int vat,int quantity,int identifier, String name, String description){
 
@@ -29,11 +29,21 @@ public class Item{
  */
 
 
-Item banana =  new Item(25, 2, 1, 1, "banana", "This is a banana in our store");
-Item apple =  new Item(35, 2, 1, 2, "apple", "This is a apple in our store");
-Item pear =  new Item(40, 2, 1, 3, "pear", "This is a pear in our store");
-Item orange =  new Item(20, 2, 1, 4, "orange", "This is a orange in our store");
+ public void initializeItems() {
+    Item banana = new Item(25, 2, 1, 1, "banana", "This is a banana in our store");
+    Item apple = new Item(35, 2, 1, 2, "apple", "This is a apple in our store");
+    Item pear = new Item(40, 2, 1, 3, "pear", "This is a pear in our store");
+    Item orange = new Item(20, 2, 1, 4, "orange", "This is a orange in our store");
 
+    // Store items in an array
+    Item[]items = { banana, apple, pear, orange };
+    this.items = items;
+    
+}
+
+public  Item[] getItem(){
+return this.items;
+}
 /* These are getters which helps to keep ItemDTO well encapsulated */
 
 /**

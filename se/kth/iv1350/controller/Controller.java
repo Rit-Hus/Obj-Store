@@ -5,6 +5,7 @@ import se.kth.iv1350.integration.ExternalInventorySystem;
 import se.kth.iv1350.integration.ItemDTO;
 import se.kth.iv1350.integration.SaleDTO;
 import se.kth.iv1350.integration.SaleLog;
+import se.kth.iv1350.model.Item;
 import se.kth.iv1350.model.Receipt;
 import se.kth.iv1350.model.Sale;
 
@@ -16,6 +17,7 @@ public class Controller {
     private Sale sale;
     private Receipt receipt;
     private ItemDTO cart;
+    private Item item;
   
 
   //constructer for controller
@@ -28,6 +30,7 @@ public class Controller {
 
   public void startSale(){
      this.sale = new Sale();
+     this.item.initializeItems();
   } 
 
   //

@@ -1,23 +1,20 @@
 package se.kth.iv1350.view;
 
 import java.util.Scanner;
+import se.kth.iv1350.model.Item;
 
 public class View {
 
     public void storeTerminal() {
         Scanner scanner = new Scanner(System.in);
+        Item[] list = Item.getItem();
         
-        // Store inventory (parallel arrays)
-        String[] items = {"Apple", "Banana", "Milk", "Bread"};
-        double[] prices = {0.99, 0.59, 2.49, 1.99};
-      
-        double total = 0.0;
        
         System.out.println("=== Welcome to the Store Terminal ===");
         System.out.println("Available items:");
 
         for (int i = 0; i < items.length; i++) {
-            System.out.printf("%d. %s - $%.2f\n", i + 1, items[i], prices[i]);
+            System.out.printf("%d. %s", i + 1, items[i]);
         }
         
         while (true) {
@@ -34,12 +31,12 @@ public class View {
             
             else {
                 int index = choice - 1;
-                total += prices[index];
-                System.out.printf("Added %s. Current total: ", items[index], total);
+            
+                System.out.printf("Added %s. Current total: ", items[index]);
             }
                 
         }
 
-        System.out.printf("Thank you! Your total is: ", total);
+        System.out.printf("Thank you! Your total is: ", 10);
     }
 }
