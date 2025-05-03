@@ -123,7 +123,7 @@ public String getDescription(){
     
 }
 
-public void incrementItemQuantity(){
+public void incrementQuantity(){
     this.quantity += 1;
 }
 

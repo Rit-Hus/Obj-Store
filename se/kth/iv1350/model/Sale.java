@@ -2,7 +2,6 @@ package se.kth.iv1350.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import se.kth.iv1350.integration.SaleDTO;
 public class Sale {
 
     private LocalDate saleDate;
@@ -28,13 +27,26 @@ public class Sale {
     }
 
 
+    public void uppdateTotal() {
+        totalAmount = 0;
+        for (Item item : items) {
+            totalAmount += item.getQuantity() * item.getPrice() * item.getVat();
+            // VAT = items.getVAT()*items.getItemPrice()*items.getQuantity()
+            totalAmount = this.totalAmount;
+
+        }
+
+    }
+
    public void scanItems(ArrayList<Item> items){
     for(Item item : items){
 
         if(isScanned(item.getItemID())){
-            item.incrementItemQuantity();
+            item.incrementQuantity();
         }
     }
+
+    updateTotal();
     
    }
 
@@ -46,11 +58,6 @@ public class Sale {
     }
     return false;
 
-   }
-
-
-   public SaleDTO createSaleDTO(int vat, ArrayList<Item> items, LocalDate saledaDate, int amountPaid){
-    return new SaleDTO(VAT, items, saleDate, amountPaid);
    }
 
 
