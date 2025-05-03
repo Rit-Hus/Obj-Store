@@ -41,8 +41,8 @@ public class Item{
     
 }
 
-public  Item[] getItem(){
-return this.items;
+public static Item[] getItem(){
+return items;
 }
 /* These are getters which helps to keep ItemDTO well encapsulated */
 
