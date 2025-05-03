@@ -9,7 +9,7 @@ public class ItemDTO {
 private double price;
 private int VAT;
 private int quantity;
-private int identifier;
+private String itemID;
 private String name;
 private String description;
 
@@ -26,12 +26,12 @@ private String description;
  * @param name        The name of the item.
  * @param description A description of the item.
  */
-public ItemDTO( double price,int vat,int quantity,int identifier, String name, String description){
+public ItemDTO( double price,int vat,int quantity,String itemID, String name, String description){
 
 this.price = price;
 this.VAT = vat;
 this.quantity = quantity;
-this.identifier = identifier;
+this.itemID = itemID;
 this.name = name;
 this.description = description;
 
@@ -87,9 +87,9 @@ public int getQuantity (){
  *
  * @return The identifier of the item.
  */
-public int getIdentifier (){
+public String getIdentifier (){
 
-    return identifier; 
+    return itemID; 
     
 }
 

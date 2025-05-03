@@ -1,22 +1,24 @@
 package se.kth.iv1350.model;
 
+import java.util.ArrayList;
+
 
 public class Item{
 
     private double price;
     private int vat;
     private int quantity;
-    private int identifier;
+    private String itemID;
     private String name;
     private String description;
-    private Item[] items;
+    private ArrayList<Item> items;
 
-    public Item(double price,int vat,int quantity,int identifier, String name, String description){
+    public Item(double price,int vat,int quantity,String identifier, String name, String description){
 
         this.price = price;
         this.vat = vat;
         this.quantity = quantity;
-        this.identifier = identifier;
+        this.itemID = identifier;
         this.name = name;
         this.description = description;
     
@@ -30,20 +32,26 @@ public class Item{
 
 
  public void initializeItems() {
-    Item banana = new Item(25, 2, 1, 1, "banana", "This is a banana in our store");
-    Item apple = new Item(35, 2, 1, 2, "apple", "This is a apple in our store");
-    Item pear = new Item(40, 2, 1, 3, "pear", "This is a pear in our store");
-    Item orange = new Item(20, 2, 1, 4, "orange", "This is a orange in our store");
+    Item banana = new Item(25, 2, 1, "1", "banana", "This is a banana in our store");
+    Item apple = new Item(35, 2, 1, "2", "apple", "This is a apple in our store");
+    Item pear = new Item(40, 2, 1, "3", "pear", "This is a pear in our store");
+    Item orange = new Item(20, 2, 1, "4", "orange", "This is a orange in our store");
 
     // Store items in an array
-    Item[]items = { banana, apple, pear, orange };
+   items.add(pear);
+   items.add(banana);
+   items.add(apple);
+   items.add(orange);
+
     this.items = items;
     
 }
 
-public Item[] getItem() {
+public ArrayList<Item> getItems() {
     return items;
 }
+
+
 /* These are getters which helps to keep ItemDTO well encapsulated */
 
 /**
@@ -85,9 +93,9 @@ public int getQuantity (){
  *
  * @return The identifier of the item.
  */
-public int getIdentifier (){
+public String getItemID (){
 
-    return identifier; 
+    return itemID; 
     
 }
 
@@ -113,6 +121,10 @@ public String getDescription(){
 
     return  description;
     
+}
+
+public void incrementItemQuantity(){
+    this.quantity += 1;
 }
 
 }
