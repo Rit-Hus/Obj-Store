@@ -1,10 +1,8 @@
 package se.kth.iv1350.model;
 
-
 public class Item {
-
     private double price;
-    private double vat;  // VAT as a percentage (e.g., 20 for 20% VAT)
+    private double vat;
     private int quantity;
     private String itemID;
     private String name;
@@ -12,7 +10,7 @@ public class Item {
 
     public Item(double price, double vat, int quantity, String itemID, String name, String description) {
         this.price = price;
-        this.vat = vat;  // Ensure VAT is passed as a decimal (e.g., 0.2 for 20%)
+        this.vat = vat;
         this.quantity = quantity;
         this.itemID = itemID;
         this.name = name;
@@ -33,6 +31,14 @@ public class Item {
 
     public String getItemID() {
         return itemID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void incrementQuantity() {

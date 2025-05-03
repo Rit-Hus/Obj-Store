@@ -1,37 +1,47 @@
 package se.kth.iv1350.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import se.kth.iv1350.integration.SaleDTO;
 
+public class Receipt {
+    private double totalVAT;
+    private double totalPrice;
+    private double totalChange;
+    private LocalDate saleDate;
+    private ArrayList<Item> items;
+    private double amountPaid;
 
-    public class Receipt {
-
-        private int totalVAT;
-        private int totalPrice;
-        private double totalChange;
-        private LocalDate saleDate;
-    
-        public Receipt(SaleDTO saleDTO, double change) {
-            this.saleDate = saleDTO.getSaleDate();
-            this.totalPrice = saleDTO.getTotalAmount();
-            this.totalVAT = saleDTO.getVAT();  // Correctly fetch VAT from SaleDTO
-            this.totalChange = change;  // Set the calculated change
-        }
-    
-        public int getTotalPrice() {
-            return totalPrice;
-        }
-    
-        public int getTotalVat() {
-            return totalVAT;  // Return total VAT from SaleDTO
-        }
-    
-        public LocalDate getSaleDate() {
-            return saleDate;
-        }
-    
-        public double getChange() {
-            return totalChange;
-        }
+    public Receipt(SaleDTO saleDTO, double change) {
+        this.saleDate = saleDTO.getSaleDate();
+        this.totalPrice = saleDTO.getTotalAmount();
+        this.totalVAT = saleDTO.getVAT();
+        this.totalChange = change;
+        this.items = saleDTO.getItems();
+        this.amountPaid = saleDTO.getAmountPaid();
     }
-    
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public double getTotalVat() {
+        return totalVAT;
+    }
+
+    public LocalDate getSaleDate() {
+        return saleDate;
+    }
+
+    public double getChange() {
+        return totalChange;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public double getAmountPaid() {
+        return amountPaid;
+    }
+}

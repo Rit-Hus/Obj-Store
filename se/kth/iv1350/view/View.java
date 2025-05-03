@@ -2,37 +2,80 @@ package se.kth.iv1350.view;
 
 import java.util.ArrayList;
 import se.kth.iv1350.controller.Controller;
+import se.kth.iv1350.integration.Printer;
 import se.kth.iv1350.model.Item;
-import se.kth.iv1350.model.Payment;
 import se.kth.iv1350.model.Receipt;
 
 public class View {
     private Controller controller;
+    private Printer printer;
 
     public View(Controller controller) {
         this.controller = controller;
+        this.printer = new Printer();
     }
 
     public void run() {
-        controller.startSale();  // Start a new sale
+        controller.startSale();
+        System.out.println("Add 1 item with item id abc123:");
 
-        // Create and scan some sample items
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(25, 20, 1, "1", "banana", "A banana"));
-        items.add(new Item(35, 20, 1, "2", "apple", "An apple"));
+        Item oatmeal = new Item(29.90, 6.0, 1, "abc123", "BigWheel Oatmeal", 
+                              "BigWheel Oatmeal 500g, whole grain oats, high fiber, gluten free");
+        items.add(oatmeal);
+        
+        printItemDetails(oatmeal);
+        System.out.println("\nTotal cost (incl VAT): " + formatPrice(oatmeal.getPrice()) + " SEK");
+        System.out.println("Total VAT: " + formatPrice(oatmeal.getPrice() * oatmeal.getVat()/100) + " SEK\n");
+        
+        controller.scanItems(items);
 
-        controller.scanItems(items);  // Scan the items via the controller
+        // Add same item again
+        System.out.println("Add 1 item with item id abc123:");
+        items.clear();
+        items.add(oatmeal);
+        printItemDetails(oatmeal);
+        System.out.println("\nTotal cost (incl VAT): " + formatPrice(2*oatmeal.getPrice()) + " SEK");
+        System.out.println("Total VAT: " + formatPrice(2*(oatmeal.getPrice() * oatmeal.getVat()/100)) + " SEK\n");
+        
+        controller.scanItems(items);
 
-        Payment payment = new Payment();
-        payment.startPayment(100);  // Simulate customer paying 100
+        // Add different item
+        System.out.println("Add 1 item with item id def456:");
+        Item yogurt = new Item(14.90, 6.0, 1, "def456", "YouGoGo Blueberry", 
+                             "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour");
+        items.clear();
+        items.add(yogurt);
+        
+        printItemDetails(yogurt);
+        double runningTotal = 2*oatmeal.getPrice() + yogurt.getPrice();
+        double runningVAT = 2*(oatmeal.getPrice() * oatmeal.getVat()/100) + (yogurt.getPrice() * yogurt.getVat()/100);
+        System.out.println("\nTotal cost (incl VAT): " + formatPrice(runningTotal) + " SEK");
+        System.out.println("Total VAT: " + formatPrice(runningVAT) + " SEK\n");
+        
+        controller.scanItems(items);
 
-        Receipt receipt = controller.endSale(100);  // End the sale and get the receipt
+        // End sale
+        System.out.println("End sale:");
+        Receipt receipt = controller.endSale(100);
+        System.out.println("Total cost (incl VAT): " + formatPrice(receipt.getTotalPrice()) + " SEK\n");
 
-        // Print the receipt with the correct total price and VAT
-        System.out.println("Receipt generated:");
-        System.out.println("Total Price: " + receipt.getTotalPrice());  // Should now reflect correct total
-        System.out.println("VAT: " + receipt.getTotalVat());  // Should now reflect correct VAT
-        System.out.println("Total Change: " + receipt.getChange());
-        System.out.println("Sale Date: " + receipt.getSaleDate());
+        // Print receipt
+        printer.print(receipt);
+        
+        // Final change message
+        System.out.println("Change to give the customer: " + formatPrice(receipt.getChange()) + " SEK");
+    }
+
+    private void printItemDetails(Item item) {
+        System.out.println("Item ID: " + item.getItemID());
+        System.out.println("Item name: " + item.getName());
+        System.out.println("Item cost: " + formatPrice(item.getPrice()) + " SEK");
+        System.out.println("VAT: " + item.getVat() + "%");
+        System.out.println("Item description: " + item.getDescription());
+    }
+
+    private String formatPrice(double price) {
+        return String.format("%.2f", price).replace('.', ',');
     }
 }
