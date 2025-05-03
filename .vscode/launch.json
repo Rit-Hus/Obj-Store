@@ -6,6 +6,13 @@
       "name": "Main",
       "request": "launch",
       "mainClass": "se.kth.iv1350.startup.Main",
+      "projectName": "Obj-Store_224dfea1"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "se.kth.iv1350.startup.Main",
       "projectName": "Obj-Store_1981ecdf"
     },
     {
