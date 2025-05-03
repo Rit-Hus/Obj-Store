@@ -27,11 +27,12 @@ public class SaleDTO{
      */
 
 
-        public SaleDTO(int totalVAT, ArrayList<Item> items, LocalDate saleDate, int amountPaid){
+        public SaleDTO(int totalVAT, ArrayList<Item> items, LocalDate saleDate, int amountPaid, int totalPrice){
             this.items = items;
             this.totalVAT = totalVAT;
             this.saleDate = saleDate;
             this.amountPaid = amountPaid;
+            this.totalPrice = totalPrice;
         }
 
 
