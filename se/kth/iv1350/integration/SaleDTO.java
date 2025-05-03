@@ -5,57 +5,50 @@ import java.util.ArrayList;
 import se.kth.iv1350.model.Item;
 
 /**
- * The SaleDTO class represents a completed sale with details such as the total price,
- * product amount, sale date, product name, and price per item.
- * It provides methods to access these details and update the total price.
+ * Represents the details of a sale, including VAT, items, total amount, etc.
  */
-public class SaleDTO{
-        private int totalPrice;
-        private ArrayList<Item> items = new ArrayList<>();
-        private int totalVAT;
-        private java.time.LocalDate saleDate;
-        private int amountPaid;
+public class SaleDTO {
 
-        
-/**
-     * Constructor for the SaleDTO. Creates a new instance of SaleDTO.
-     *
-     * @param totalVAT the total VAT of the sale
-     * @param items the list of items sold
-     * @param saleDate the date of the sale
-     * @param amountPaid the amount paid by the customer
+    private int VAT;  // Total VAT for the sale
+    private ArrayList<Item> items;
+    private LocalDate saleDate;
+    private int totalAmount;
+    private int amountPaid;
+
+    /**
+     * Constructor for SaleDTO.
+     * 
+     * @param VAT The total VAT for the sale.
+     * @param items The list of items in the sale.
+     * @param saleDate The date of the sale.
+     * @param amountPaid The amount paid by the customer.
+     * @param totalAmount The total price of the sale.
      */
+    public SaleDTO(int VAT, ArrayList<Item> items, LocalDate saleDate, int amountPaid, int totalAmount) {
+        this.VAT = VAT;
+        this.items = items;
+        this.saleDate = saleDate;
+        this.amountPaid = amountPaid;
+        this.totalAmount = totalAmount;
+    }
 
+    public int getVAT() {
+        return VAT;  // Return the total VAT for the sale
+    }
 
-        public SaleDTO(int totalVAT, ArrayList<Item> items, LocalDate saleDate, int amountPaid, int totalPrice){
-            this.items = items;
-            this.totalVAT = totalVAT;
-            this.saleDate = saleDate;
-            this.amountPaid = amountPaid;
-            this.totalPrice = totalPrice;
-        }
+    public ArrayList<Item> getItems() {
+        return items;
+    }
 
+    public LocalDate getSaleDate() {
+        return saleDate;
+    }
 
-        public ArrayList<Item> getItems(){
-            return items;
-        }
+    public int getTotalAmount() {
+        return totalAmount;
+    }
 
-        public LocalDate getSaleDate(){
-            return saleDate;
-        }
-
-        public int getTotalVat(){
-            return totalVAT;
-        }
-
-        public int getTotalPrice(){
-            return totalPrice;
-        }
-
-        public int getAmountPaid(){
-            return amountPaid;
-        }
-
-
-
+    public int getAmountPaid() {
+        return amountPaid;
+    }
 }

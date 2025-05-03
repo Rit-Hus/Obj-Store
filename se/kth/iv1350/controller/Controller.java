@@ -32,9 +32,10 @@ public class Controller {
     }
 
     public Receipt endSale(int amountPaid) {
-        SaleDTO saleDTO = createSaleDTO(amountPaid);
+        SaleDTO saleDTO = createSaleDTO(amountPaid);  // Get SaleDTO with totalAmount and VAT
         Payment payment = new Payment();
-        payment.startPayment(amountPaid);  
-        return new Receipt(saleDTO, payment);  
+        double change = payment.getChange(amountPaid, saleDTO);  // Pass SaleDTO, not just the amountPaid
+        return new Receipt(saleDTO, change);  // Pass the calculated change to Receipt
     }
+    
 }

@@ -18,8 +18,8 @@ public class View {
 
         // Create and scan some sample items
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(25, 2, 1, "1", "banana", "A banana"));
-        items.add(new Item(35, 2, 1, "2", "apple", "An apple"));
+        items.add(new Item(25, 20, 1, "1", "banana", "A banana"));
+        items.add(new Item(35, 20, 1, "2", "apple", "An apple"));
 
         controller.scanItems(items);  // Scan the items via the controller
 
@@ -28,10 +28,10 @@ public class View {
 
         Receipt receipt = controller.endSale(100);  // End the sale and get the receipt
 
-        // Print the receipt with the correct total price
+        // Print the receipt with the correct total price and VAT
         System.out.println("Receipt generated:");
-        System.out.println("Total Price: " + receipt.getTotalPrice());  // Should show correct total now
-        System.out.println("VAT: " + receipt.getTotalVat());
+        System.out.println("Total Price: " + receipt.getTotalPrice());  // Should now reflect correct total
+        System.out.println("VAT: " + receipt.getTotalVat());  // Should now reflect correct VAT
         System.out.println("Total Change: " + receipt.getChange());
         System.out.println("Sale Date: " + receipt.getSaleDate());
     }

@@ -8,35 +8,44 @@ public class Sale {
 
     private LocalDate saleDate;
     private double totalAmount;
-    private int VAT;  // Assuming VAT is set somewhere
+    private int totalVAT;  // Correctly track the VAT
     private ArrayList<Item> items = new ArrayList<>();
 
     public Sale(){
         saleDate = LocalDate.now();
     }
 
-    // Updates the totalAmount based on the scanned items
+    /**
+     * Update the total amount of the sale and calculate the VAT for all items.
+     */
     public void updateTotal(){
-        totalAmount = 0; // Reset totalAmount
+        totalAmount = 0;
+        totalVAT = 0;
+
+        // Calculate total price and VAT
         for(Item item : items){
-            totalAmount += item.getQuantity() * item.getPrice() * item.getVat();  // Calculate total including VAT
+            double itemTotal = item.getQuantity() * item.getPrice();  // Price * Quantity for the item
+            totalAmount += itemTotal;  // Add to the total amount
+
+            // Calculate VAT for this item and accumulate it
+            totalVAT += (int) (itemTotal * (item.getVat() / 100));  // VAT as a percentage
         }
-        System.out.println("The Total is now: " + totalAmount);  // For debugging purposes
+
+        System.out.println("The Total is now: " + totalAmount);
+        System.out.println("Total VAT: " + totalVAT);  // Debugging VAT for checking
     }
 
-    // Scan the items and add them to the sale
     public void scanItems(ArrayList<Item> items){
         for(Item item : items){
             if(isScanned(item.getItemID())){
-                item.incrementQuantity();  // If item exists, increment its quantity
+                item.incrementQuantity();
             } else {
-                this.items.add(item);  // Otherwise, add the new item
+                this.items.add(item);
             }
         }
-        updateTotal();  // Update the total amount after scanning
+        updateTotal();  // Update total amount and VAT after scanning
     }
 
-    // Check if the item is already in the sale
     public boolean isScanned(String itemID){
         for(Item item : items){
             if(item.getItemID().equals(itemID)){
@@ -46,22 +55,18 @@ public class Sale {
         return false;
     }
 
-    // Create a SaleDTO with the current sale data
     public SaleDTO createSaleDTO(int amountPaid){
-        return new SaleDTO(VAT, items, saleDate, amountPaid,(int) totalAmount);  // Pass totalAmount to SaleDTO
+        return new SaleDTO(totalVAT, items, saleDate, amountPaid, (int) totalAmount);
     }
 
-    // Getter for totalAmount (in case you need it elsewhere)
     public double getTotalAmount() {
         return totalAmount;
     }
 
-    // Getter for saleDate (in case you need it elsewhere)
     public LocalDate getSaleDate() {
         return saleDate;
     }
 
-    // Getter for items
     public ArrayList<Item> getItems() {
         return items;
     }
