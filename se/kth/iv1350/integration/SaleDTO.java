@@ -39,6 +39,10 @@ public class SaleDTO{
             return items;
         }
 
+        public LocalDate getSaleDate(){
+            return saleDate;
+        }
+
         public int getTotalVat(){
             return totalVAT;
         }
@@ -47,7 +51,7 @@ public class SaleDTO{
             return totalPrice;
         }
 
-        public int getTotPaid(){
+        public int getAmountPaid(){
             return amountPaid;
         }
 

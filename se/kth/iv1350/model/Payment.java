@@ -1,5 +1,7 @@
 package se.kth.iv1350.model;
 
+import se.kth.iv1350.integration.SaleDTO;
+
 public class Payment {
     private String paymentMethod;
     private double amountPaid;
@@ -42,8 +44,8 @@ public class Payment {
     }
      
 
-    public double getAmoutChange(int totalPaid, Sale sale) {
-        //amountChange = totalPaid - (Info from the sale class)
+    public double getChange(int totalPaid, SaleDTO saleDTO) {
+        amountChange = saleDTO.getTotalPrice() - totalPaid;
         return amountChange;
     }
 
