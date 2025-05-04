@@ -4,101 +4,92 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.time.LocalDate;
-import main.se.kth.iv1350.integration.SaleDTO;
-import main.se.kth.iv1350.model.Payment;
+import main.se.kth.iv1350.model.*;
+import main.se.kth.iv1350.integration.*;
 
-
-/**
- * This class contains unit tests for the Payment class. It tests the getChange
- * method to ensure it calculates the correct change based on the amount paid and
- * the sale total.
- */
 public class PaymentTest {
-    
     @Test
     public void testGetChangeWithOverpayment() {
-        System.out.println("\n--- Testing getChange with overpayment ---");
+        System.out.println("\n=== TEST 1: Change Calculation (Overpayment) ===");
         
         // Setup
         Payment payment = new Payment();
         double amountPaid = 100.0;
         double saleTotal = 29.90;
-        SaleDTO dto = new SaleDTO(1.79, new ArrayList<>(), 
-                                 LocalDate.now(), amountPaid, saleTotal);
+        SaleDTO dto = createTestDTO(amountPaid, saleTotal);
         
-        System.out.println("Amount paid: " + amountPaid);
-        System.out.println("Sale total: " + saleTotal);
+        System.out.println("[Input] Amount paid: " + amountPaid);
+        System.out.println("[Input] Sale total: " + saleTotal);
         
         // Execution
         double change = payment.getChange(amountPaid, dto);
-        System.out.println("Calculated change: " + change);
+        System.out.println("[Output] Calculated change: " + change);
         
         // Verification
         double expectedChange = 70.10;
-        System.out.println("Expected change: " + expectedChange);
-        assertEquals("Change should be 70.10", expectedChange, change, 0.001);
+        System.out.println("[Expected] Change: " + expectedChange);
+        assertEquals("Change calculation incorrect", 
+                    expectedChange, change, 0.001);  // Increased delta for floating-point
         
-        System.out.println("--- Test PASSED ---");
+        System.out.println("=== TEST 1 PASSED ===\n");
     }
 
     @Test
-    /**
-     * Tests the getChange method of the Payment class when the payment is exact.
-     * It verifies that the change is 0.0 when the amount paid equals the sale total.
-     */
     public void testGetChangeWithExactPayment() {
-        System.out.println("\n--- Testing getChange with exact payment ---");
+        System.out.println("\n=== TEST 2: Change Calculation (Exact Payment) ===");
         
         // Setup
         Payment payment = new Payment();
         double amountPaid = 29.90;
-        SaleDTO dto = new SaleDTO(1.79, new ArrayList<>(), 
-                                 LocalDate.now(), amountPaid, amountPaid);
+        SaleDTO dto = createTestDTO(amountPaid, amountPaid);
         
-        System.out.println("Amount paid: " + amountPaid);
-        System.out.println("Sale total: " + amountPaid);
+        System.out.println("[Input] Amount paid: " + amountPaid);
+        System.out.println("[Input] Sale total: " + amountPaid);
         
         // Execution
         double change = payment.getChange(amountPaid, dto);
-        System.out.println("Calculated change: " + change);
+        System.out.println("[Output] Calculated change: " + change);
         
         // Verification
         double expectedChange = 0.0;
-        System.out.println("Expected change: " + expectedChange);
-        assertEquals("Change should be 0.0", expectedChange, change, 0.001);
+        assertEquals("Exact payment should yield zero change", 
+                    expectedChange, change, 0.0);
         
-        System.out.println("--- Test PASSED ---");
+        System.out.println("=== TEST 2 PASSED ===\n");
     }
 
     @Test
-
-    /**
-     * Tests the getChange method of the Payment class when the payment is less than
-     * the sale total. It verifies that the change is negative, indicating an amount
-     * due.
-     */
     public void testGetChangeWithUnderpayment() {
-        System.out.println("\n--- Testing getChange with underpayment ---");
+        System.out.println("\n=== TEST 3: Change Calculation (Underpayment) ===");
         
         // Setup
         Payment payment = new Payment();
         double amountPaid = 20.0;
         double saleTotal = 29.90;
-        SaleDTO dto = new SaleDTO(1.79, new ArrayList<>(), 
-                                 LocalDate.now(), amountPaid, saleTotal);
+        SaleDTO dto = createTestDTO(amountPaid, saleTotal);
         
-        System.out.println("Amount paid: " + amountPaid);
-        System.out.println("Sale total: " + saleTotal);
+        System.out.println("[Input] Amount paid: " + amountPaid);
+        System.out.println("[Input] Sale total: " + saleTotal);
         
         // Execution
         double change = payment.getChange(amountPaid, dto);
-        System.out.println("Calculated change: " + change);
+        System.out.println("[Output] Calculated change: " + change);
         
         // Verification
-        double expectedChange = -9.90; // Negative indicates amount due
-        System.out.println("Expected change: " + expectedChange);
-        assertEquals("Change should be -9.90", expectedChange, change, 0.001);
+        double expectedChange = -9.90;
+        assertEquals("Underpayment should show negative change", 
+                    expectedChange, change, 0.001);  // Adjusted delta for floating-point
         
-        System.out.println("--- Test PASSED ---");
+        System.out.println("=== TEST 3 PASSED ===\n");
+    }
+
+    private SaleDTO createTestDTO(double amountPaid, double totalAmount) {
+        return new SaleDTO(
+            1.79,  // VAT (6% of 29.90)
+            new ArrayList<>(),
+            LocalDate.now(),
+            amountPaid,
+            totalAmount
+        );
     }
 }
