@@ -92,15 +92,15 @@ public class SaleTest {
         System.out.println("--- testScanExistingItem PASSED ---\n");
     }
 
-    @Test
 
     /**
      * Tests the createSaleDTO method of the Sale class. It verifies that the
      * generated SaleDTO object contains the correct information about the sale,
      * including total amount, amount paid, and items.
      */
+    @Test
     public void testCreateSaleDTO() {
-        System.out.println("--- Testing createSaleDTO ---");
+        System.out.println("\n--- Testing createSaleDTO ---");
         
         Item testItem = new Item(PRICE, VAT, 1, ITEM_ID, NAME, DESC);
         sale.scanItems(new ArrayList<>(List.of(testItem)));
@@ -109,6 +109,11 @@ public class SaleTest {
         SaleDTO dto = sale.createSaleDTO(amountPaid);
         
         System.out.println("Verifying DTO contents...");
+        System.out.println("DTO contains:");
+        System.out.println("- Total amount: " + dto.getTotalAmount());
+        System.out.println("- Amount paid: " + dto.getAmountPaid());
+        System.out.println("- Items count: " + dto.getItems().size());
+        
         assertNotNull("DTO should not be null", dto);
         assertEquals("Total amount should match", PRICE, dto.getTotalAmount(), 0.001);
         assertEquals("Amount paid should match", amountPaid, dto.getAmountPaid(), 0.001);
