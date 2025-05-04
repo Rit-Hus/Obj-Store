@@ -1,14 +1,23 @@
 package main.se.kth.iv1350.integration;
 
 import java.time.format.DateTimeFormatter;
-
 import main.se.kth.iv1350.model.Item;
 import main.se.kth.iv1350.model.Receipt;
 
+/**
+ * The Printer class is responsible for printing the receipt for a sale. It formats
+ * the receipt details and outputs them to the console.
+ */
 public class Printer {
     public Printer() {
     }
 
+    /**
+     * Prints the receipt for the sale. The receipt includes the items purchased,
+     * their quantities, prices, total price, VAT, amount paid, and change.
+     *
+     * @param receipt The receipt to be printed.
+     */
     public void print(Receipt receipt) {
         StringBuilder receiptBuilder = new StringBuilder();
         
@@ -40,7 +49,13 @@ public class Printer {
         
         System.out.println(receiptBuilder.toString());
     }
-
+/**
+     * Formats the price to two decimal places and replaces the decimal point with a
+     * comma.
+     *
+     * @param price The price to format.
+     * @return The formatted price as a string.
+     */
     private String formatPrice(double price) {
         return String.format("%.2f", price).replace('.', ',');
     }
