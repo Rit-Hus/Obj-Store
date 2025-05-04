@@ -5,6 +5,13 @@
       "type": "java",
       "name": "Main",
       "request": "launch",
+      "mainClass": "main.se.kth.iv1350.startup.Main",
+      "projectName": "Obj-Store_3a3497d8"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
       "mainClass": "se.kth.iv1350.startup.Main",
       "projectName": "Obj-Store_224dfea1"
     },
