@@ -24,6 +24,7 @@ public class View {
      * class. It simulates a sale by adding items, calculating totals, and printing
      * the receipt.
      */
+    
     public void run() {
         controller.startSale();
         System.out.println("Add 1 item with item id abc123:");
@@ -39,7 +40,6 @@ public class View {
         
         controller.scanItems(items);
 
-        // Add same item again
         System.out.println("Add 1 item with item id abc123:");
         items.clear();
         items.add(oatmeal);
@@ -49,7 +49,6 @@ public class View {
         
         controller.scanItems(items);
 
-        // Add different item
         System.out.println("Add 1 item with item id def456:");
         Item yogurt = new Item(14.90, 6.0, 1, "def456", "YouGoGo Blueberry", 
                              "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour");
@@ -64,15 +63,15 @@ public class View {
         
         controller.scanItems(items);
 
-        // End sale
+
         System.out.println("End sale:");
         Receipt receipt = controller.endSale(100);
         System.out.println("Total cost (incl VAT): " + formatPrice(receipt.getTotalPrice()) + " SEK\n");
 
-        // Print receipt
+
         printer.print(receipt);
         
-        // Final change message
+
         System.out.println("Change to give the customer: " + formatPrice(receipt.getChange()) + " SEK");
     }
 
