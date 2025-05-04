@@ -7,12 +7,22 @@ import main.se.kth.iv1350.integration.*;
 import main.se.kth.iv1350.model.*;
 import main.se.kth.iv1350.controller.*;
 
+
+/**
+ * This class contains unit tests for the Controller class. It tests the endSale
+ * method to ensure it returns a valid receipt with the correct total price and
+ * change.
+ */
 public class ControllerTest {
     private static final String ITEM_ID = "abc123";
     private static final double PRICE = 29.90;
     private static final double VAT = 6.0;
     
     @Test
+    /**
+     * Tests the endSale method of the Controller class. It verifies that the
+     * returned receipt contains the correct total price and change.
+     */
     public void testEndSaleReturnsValidReceipt() {
         System.out.println("\n--- Testing Controller endSale ---");
         

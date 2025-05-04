@@ -6,6 +6,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import main.se.kth.iv1350.integration.*;
 
+
+/**
+ * This class contains unit tests for the SaleLog class. It tests the storesInfo
+ * method to ensure it correctly adds a SaleDTO object to the log.
+ */
 public class SaleLogTest {
     @Test
     public void testStoresInfoAddsToLog() {
@@ -25,7 +30,13 @@ public class SaleLogTest {
         assertEquals("Log count should increase by 1", 1, newCount);
         System.out.println("--- Test PASSED ---");
     }
-    
+    /**
+     * This method uses reflection to access the private saleDTOList field in the
+     * SaleLog class and returns its size.
+     * 
+     * @param log The SaleLog instance to inspect.
+     * @return The number of SaleDTO objects in the log.
+     */
     private int getSaleCount(SaleLog log) {
         try {
             java.lang.reflect.Field field = SaleLog.class.getDeclaredField("saleDTOList");

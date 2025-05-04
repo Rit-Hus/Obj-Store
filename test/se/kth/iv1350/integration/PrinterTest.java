@@ -9,8 +9,18 @@ import java.util.ArrayList;
 import main.se.kth.iv1350.model.*;
 import main.se.kth.iv1350.integration.*;
 
+/**
+ * This class contains unit tests for the Printer class. It tests the print method
+ * to ensure it generates the correct output for a given receipt.
+ */
 public class PrinterTest {
     @Test
+
+    /**
+     * Tests the print method of the Printer class. It verifies that the printed
+     * output contains the expected information about the items, total price, and
+     * change.
+     */
     public void testPrintOutputContainsCorrectInformation() {
         System.out.println("\n=== STARTING PRINTER TEST ===");
         System.out.println("[SETUP] Creating test data...");

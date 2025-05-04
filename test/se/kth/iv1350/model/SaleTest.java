@@ -9,6 +9,13 @@ import java.util.List;
 import main.se.kth.iv1350.model.*;
 import main.se.kth.iv1350.integration.*;
 
+
+
+/**
+ * This class contains unit tests for the Sale class. It tests the scanItems and
+ * createSaleDTO methods to ensure they work correctly with both new and existing
+ * items.
+ */
 public class SaleTest {
     private Sale sale;
     private static final String ITEM_ID = "abc123";
@@ -18,11 +25,19 @@ public class SaleTest {
     private static final String DESC = "500g, whole grain oats";
 
     @Before
+
+    /**
+     * Sets up the test environment by creating a new Sale instance before each test.
+     */
     public void setUp() {
         sale = new Sale();
     }
 
     @Test
+    /**
+     * Tests the scanItems method of the Sale class. It verifies that a new item is
+     * added correctly and that the total amount is updated accordingly.
+     */
     public void testScanNewItem() {
         System.out.println("--- Testing scanNewItem ---");
         
@@ -50,6 +65,12 @@ public class SaleTest {
     }
 
     @Test
+
+    /**
+     * Tests the scanItems method of the Sale class when scanning an existing item.
+     * It verifies that the quantity is updated and the total amount is recalculated
+     * correctly.
+     */
     public void testScanExistingItem() {
         System.out.println("--- Testing scanExistingItem ---");
         
@@ -72,6 +93,12 @@ public class SaleTest {
     }
 
     @Test
+
+    /**
+     * Tests the createSaleDTO method of the Sale class. It verifies that the
+     * generated SaleDTO object contains the correct information about the sale,
+     * including total amount, amount paid, and items.
+     */
     public void testCreateSaleDTO() {
         System.out.println("--- Testing createSaleDTO ---");
         
