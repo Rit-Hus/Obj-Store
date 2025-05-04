@@ -1,12 +1,16 @@
 package main.se.kth.iv1350.view;
 
 import java.util.ArrayList;
-
 import main.se.kth.iv1350.controller.Controller;
 import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.model.Item;
 import main.se.kth.iv1350.model.Receipt;
 
+/**
+ * The View class is responsible for displaying information to the user and
+ * interacting with the Controller. It handles user input and output, including
+ * printing receipts.
+ */
 public class View {
     private Controller controller;
     private Printer printer;
@@ -15,7 +19,11 @@ public class View {
         this.controller = controller;
         this.printer = new Printer();
     }
-
+/**
+     * Starts the sale process by calling the appropriate methods in the Controller
+     * class. It simulates a sale by adding items, calculating totals, and printing
+     * the receipt.
+     */
     public void run() {
         controller.startSale();
         System.out.println("Add 1 item with item id abc123:");
@@ -68,6 +76,13 @@ public class View {
         System.out.println("Change to give the customer: " + formatPrice(receipt.getChange()) + " SEK");
     }
 
+
+    /**
+     * Prints the details of an item, including its ID, name, cost, VAT, and
+     * description.
+     *
+     * @param item The item to be printed.
+     */
     private void printItemDetails(Item item) {
         System.out.println("Item ID: " + item.getItemID());
         System.out.println("Item name: " + item.getName());
