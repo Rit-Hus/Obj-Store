@@ -21,13 +21,13 @@ public class Printer {
     public void print(Receipt receipt) {
         StringBuilder receiptBuilder = new StringBuilder();
         
-        // Header
+
         receiptBuilder.append("\n--- Begin receipt ---\n");
         receiptBuilder.append("Time of Sale: ").append(receipt.getSaleDate())
                      .append(" ").append(java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")))
                      .append("\n\n");
         
-        // Items
+
         for (Item item : receipt.getItems()) {
             String itemName = item.getName();
             int quantity = item.getQuantity();
@@ -38,7 +38,7 @@ public class Printer {
                 itemName, quantity, formatPrice(price), formatPrice(total)));
         }
         
-        // Footer
+
         receiptBuilder.append("\n");
         receiptBuilder.append(String.format("Total:\t\t%s SEK\n", formatPrice(receipt.getTotalPrice())));
         receiptBuilder.append(String.format("VAT: %s\n", formatPrice(receipt.getTotalVat())));
