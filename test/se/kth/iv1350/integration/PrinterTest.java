@@ -25,39 +25,38 @@ public class PrinterTest {
         System.out.println("\n=== STARTING PRINTER TEST ===");
         System.out.println("[SETUP] Creating test data...");
         
-        // 1. Create test items
+   
         Item testItem = new Item(29.90, 6.0, 2, "abc123", "BigWheel Oatmeal", "500g");
         ArrayList<Item> items = new ArrayList<>();
         items.add(testItem);
         
-        // 2. Create test sale DTO
+      
         SaleDTO dto = new SaleDTO(
-            3.58, // VAT
+            3.58,
             items,
             LocalDate.now(),
-            100.0, // Amount paid
-            59.80  // Total (2 x 29.90)
+            100.0, 
+            59.80  
         );
         
-        // 3. Create test receipt
-        Receipt receipt = new Receipt(dto, 40.20); // Change (100 - 59.80)
+
+        Receipt receipt = new Receipt(dto, 40.20);
         
         System.out.println("[TEST] Created receipt with:");
         System.out.println("  - 2 items of BigWheel Oatmeal");
         System.out.println("  - Total: 59.80 SEK");
         System.out.println("  - Change: 40.20 SEK");
-        
-        // 4. Capture output
+
         System.out.println("[ACTION] Capturing printer output...");
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
         System.setOut(new PrintStream(outContent));
         
-        // 5. Execute print
+
         Printer printer = new Printer();
         printer.print(receipt);
         
-        // 6. Restore System.out
+
         System.setOut(originalOut);
         String printedOutput = outContent.toString();
         
@@ -66,7 +65,7 @@ public class PrinterTest {
         System.out.print(printedOutput);
         System.out.println("----------------------------------------");
         
-        // 7. Verify output
+
         System.out.println("[VERIFICATION] Checking output contains:");
         
         String[] expectedPatterns = {
