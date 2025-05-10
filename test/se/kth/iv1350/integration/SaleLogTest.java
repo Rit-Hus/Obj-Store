@@ -14,21 +14,20 @@ import main.se.kth.iv1350.integration.*;
 public class SaleLogTest {
     @Test
     public void testStoresInfoAddsToLog() {
-        System.out.println("\n--- Testing SaleLog storesInfo ---");
+        
         
         SaleLog log = new SaleLog();
         SaleDTO dto = new SaleDTO(1.79, new ArrayList<>(), 
                                 LocalDate.now(), 50.0, 29.90);
         
-        System.out.println("Initial log count: " + getSaleCount(log));
-        System.out.println("Adding sale to log...");
+       
         log.storesInfo(dto);
         
         int newCount = getSaleCount(log);
-        System.out.println("New log count: " + newCount);
+       
         
         assertEquals("Log count should increase by 1", 1, newCount);
-        System.out.println("--- Test PASSED ---");
+       
     }
     /**
      * This method uses reflection to access the private saleDTOList field in the
