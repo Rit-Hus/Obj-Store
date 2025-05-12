@@ -1,6 +1,7 @@
 package main.se.kth.iv1350.controller;
 
 import java.util.ArrayList;
+import main.se.kth.iv1350.integration.ExternalInventorySystem;
 import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.integration.SaleDTO;
 import main.se.kth.iv1350.model.Item;
@@ -8,58 +9,49 @@ import main.se.kth.iv1350.model.Payment;
 import main.se.kth.iv1350.model.Receipt;
 import main.se.kth.iv1350.model.Sale;
 
-    
-
 /**
- * The Controller class is responsible for managing the sale process, including
- * starting a new sale, scanning items, and ending the sale. It interacts with
- * the model and the printer to handle the sale and print receipts.
+ * Manages the sale workflow: starting a sale, adding items, and ending the sale.
  */
 public class Controller {
-    private Sale sale;
+    private Sale currentSale;
     private Printer printer;
+    private ExternalInventorySystem inventorySystem;
 
-    /**
-     * Creates a new instance of the Controller class.
-     *
-     * @param printer The printer used for printing receipts.
-     */
-    public Controller(Printer printer) {
+    public Controller(Printer printer, ExternalInventorySystem inventorySystem) {
         this.printer = printer;
-        this.sale = new Sale();
+        this.inventorySystem = inventorySystem;
+        this.currentSale = new Sale();
     }
 
 
-    /**
-     * Starts a new sale by creating a new Sale object and initializing it with the
-     * current date and time.
-     */
     public void startSale() {
-        this.sale = new Sale();
-        System.out.println("Sale started at: " + sale.getSaleDate());
+        this.currentSale = new Sale();
     }
 
     /**
-     * Scans the items for the current sale. This method updates the sale with the
-     * scanned items.
+     * Fetches an item by ID and quantity and prints its details.
      *
-     * @param items The list of items to be scanned.
+     * @param itemID   The item identifier.
+     * @param quantity The quantity to add.
      */
-    public void scanItems(ArrayList<Item> items) {
-        sale.scanItems(items);
+    public void addItemToSale(String itemID, int quantity) {
+        Item item = inventorySystem.fetchItem(itemID, quantity);
+        printer.printItemDetails(item);
+        ArrayList<Item> bundle = new ArrayList<>();
+        bundle.add(item);
+        currentSale.scanItems(bundle);
     }
 
     /**
-     * Ends the current sale by creating a SaleDTO object and a Payment object. It
-     * calculates the change and creates a Receipt object.
+     * Ends the sale, calculates change, and prints the receipt.
      *
-     * @param amountPaid The amount paid by the customer.
-     * @return A Receipt object containing the details of the sale and change.
+     * @param amountPaid The amount the customer pays.
      */
-    public Receipt endSale(double amountPaid) {
-        SaleDTO saleDTO = sale.createSaleDTO(amountPaid);
+    public void endSale(double amountPaid) {
+        SaleDTO saleData = currentSale.createSaleDTO(amountPaid);
         Payment payment = new Payment();
-        double change = payment.getChange(amountPaid, saleDTO);
-        return new Receipt(saleDTO, change);
+        double change = payment.getChange(amountPaid, saleData);
+        Receipt receipt = new Receipt(saleData, change);
+        printer.print(receipt);
     }
 }

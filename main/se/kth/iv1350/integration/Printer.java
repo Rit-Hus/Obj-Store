@@ -5,57 +5,60 @@ import main.se.kth.iv1350.model.Item;
 import main.se.kth.iv1350.model.Receipt;
 
 /**
- * The Printer class is responsible for printing the receipt for a sale. It formats
- * the receipt details and outputs them to the console.
+ * Responsible for all console output:
+ * - Printing item details
+ * - Printing the final receipt
  */
 public class Printer {
-    public Printer() {
+    public Printer() { }
+
+    /**
+     * Prints the details of a single item.
+     */
+    public void printItemDetails(Item item) {
+        System.out.println("Item ID: " + item.getItemID());
+        System.out.println("Item name: " + item.getName());
+        System.out.println("Item cost: " + formatPrice(item.getPrice()) + " SEK");
+        System.out.println("VAT: " + item.getVat() + "%");
+        System.out.println("Item description: " + item.getDescription());
+        System.out.println();
     }
 
     /**
-     * Prints the receipt for the sale. The receipt includes the items purchased,
-     * their quantities, prices, total price, VAT, amount paid, and change.
-     *
-     * @param receipt The receipt to be printed.
+     * Prints a formatted receipt.
      */
     public void print(Receipt receipt) {
-        StringBuilder receiptBuilder = new StringBuilder();
-        
-
-        receiptBuilder.append("\n--- Begin receipt ---\n");
-        receiptBuilder.append("Time of Sale: ").append(receipt.getSaleDate())
-                     .append(" ").append(java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")))
-                     .append("\n\n");
-        
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n--- Begin receipt ---\n");
+        sb.append("Time of Sale: ")
+          .append(receipt.getSaleDate())
+          .append(" ")
+          .append(java.time.LocalTime.now()
+            .format(DateTimeFormatter.ofPattern("HH:mm")))
+          .append("\n\n");
 
         for (Item item : receipt.getItems()) {
-            String itemName = item.getName();
-            int quantity = item.getQuantity();
-            double price = item.getPrice();
-            double total = quantity * price;
-            
-            receiptBuilder.append(String.format("%-20s %d x %s\t%s SEK\n", 
-                itemName, quantity, formatPrice(price), formatPrice(total)));
+            double total = item.getQuantity() * item.getPrice();
+            sb.append(String.format(
+              "%-20s %d x %s\t%s SEK\n",
+              item.getName(),
+              item.getQuantity(),
+              formatPrice(item.getPrice()),
+              formatPrice(total)
+            ));
         }
-        
 
-        receiptBuilder.append("\n");
-        receiptBuilder.append(String.format("Total:\t\t%s SEK\n", formatPrice(receipt.getTotalPrice())));
-        receiptBuilder.append(String.format("VAT: %s\n", formatPrice(receipt.getTotalVat())));
-        receiptBuilder.append("\n");
-        receiptBuilder.append(String.format("Cash:\t\t%s SEK\n", formatPrice(receipt.getAmountPaid())));
-        receiptBuilder.append(String.format("Change:\t\t%s SEK\n", formatPrice(receipt.getChange())));
-        receiptBuilder.append("--- End receipt ---\n");
-        
-        System.out.println(receiptBuilder.toString());
+        sb.append("\n")
+          .append(String.format("Total:\t\t%s SEK\n", formatPrice(receipt.getTotalPrice())))
+          .append(String.format("VAT: %s\n", formatPrice(receipt.getTotalVat())))
+          .append("\n")
+          .append(String.format("Cash:\t\t%s SEK\n", formatPrice(receipt.getAmountPaid())))
+          .append(String.format("Change:\t\t%s SEK\n", formatPrice(receipt.getChange())))
+          .append("--- End receipt ---\n");
+
+        System.out.println(sb.toString());
     }
-/**
-     * Formats the price to two decimal places and replaces the decimal point with a
-     * comma.
-     *
-     * @param price The price to format.
-     * @return The formatted price as a string.
-     */
+
     private String formatPrice(double price) {
         return String.format("%.2f", price).replace('.', ',');
     }
