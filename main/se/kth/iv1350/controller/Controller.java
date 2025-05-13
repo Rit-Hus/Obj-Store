@@ -3,7 +3,9 @@ package main.se.kth.iv1350.controller;
 
 import java.util.ArrayList;
 import main.se.kth.iv1350.integration.ExternalInventorySystem;
+import main.se.kth.iv1350.integration.InventoryAccessException;
 import main.se.kth.iv1350.integration.ItemDTO;
+import main.se.kth.iv1350.integration.ItemNotFoundException;
 import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.integration.ReceiptDTO;
 import main.se.kth.iv1350.integration.SaleDTO;
@@ -19,10 +21,6 @@ public class Controller {
     private Printer printer;
     private ExternalInventorySystem inventorySystem;
 
-    /**
-     * @param printer          prints DTOs only
-     * @param inventorySystem  provides ItemDTOs
-     */
     public Controller(Printer printer, ExternalInventorySystem inventorySystem) {
         this.printer = printer;
         this.inventorySystem = inventorySystem;
@@ -35,15 +33,19 @@ public class Controller {
     }
 
     /**
-     * Fetches an ItemDTO from integration, prints its details,
+     * Fetches an ItemDTO from integration (or throws),
      * converts it to a model.Item, and scans it into the sale.
      *
      * @param itemID   The identifier of the item.
      * @param quantity The quantity to scan.
+     * @return The fetched ItemDTO.
+     * @throws InventoryAccessException If inventory is unavailable.
+     * @throws ItemNotFoundException    If itemID not found.
      */
-    public ItemDTO addItemToSale(String itemID, int quantity) {
-        ItemDTO dto = inventorySystem.fetchItemDTO(itemID, quantity);
+    public ItemDTO addItemToSale(String itemID, int quantity)
+            throws InventoryAccessException, ItemNotFoundException {
 
+        ItemDTO dto = inventorySystem.fetchItemDTO(itemID, quantity);
 
         Item item = new Item(
             dto.getPrice(),
@@ -63,9 +65,7 @@ public class Controller {
 
     /**
      * Ends the sale, builds a SaleDTO, computes change,
-     * wraps into a ReceiptDTO, and prints it.
-     *
-     * @param amountPaid The amount the customer paid.
+     * wraps into a Receipt, and prints it.
      */
     public void endSale(double amountPaid) {
         SaleDTO saleDTO = sale.createSaleDTO(amountPaid);

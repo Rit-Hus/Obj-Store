@@ -1,0 +1,15 @@
+Unknown item requested: noSuchID
+main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: noSuchID
+	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:58)
+	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:48)
+	at main.se.kth.iv1350.view.View.run(View.java:64)
+	at main.se.kth.iv1350.startup.Main.main(Main.java:17)
+Inventory access failure for dbError
+main.se.kth.iv1350.integration.InventoryAccessException: Inventory access failure for item: dbError
+	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:39)
+	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:48)
+	at main.se.kth.iv1350.view.View.run(View.java:75)
+	at main.se.kth.iv1350.startup.Main.main(Main.java:17)
+Caused by: java.lang.RuntimeException: Simulated connection failure
+	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:40)
+	... 3 more
