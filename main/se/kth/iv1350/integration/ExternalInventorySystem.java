@@ -28,15 +28,15 @@ public class ExternalInventorySystem {
      * or returns null if not found.
      */
     public ItemDTO fetchItemDTO(String itemID, int quantity) {
-        for (ItemDTO template : items) {
-            if (template.getIdentifier().equals(itemID)) {
+        for (ItemDTO itemDTO : items) {
+            if (itemDTO.getIdentifier().equals(itemID)) {
                 return new ItemDTO(
-                    template.getPrice(),
-                    template.getVat(),
+                    itemDTO.getPrice(),
+                    itemDTO.getVat(),
                     quantity,
-                    template.getIdentifier(),
-                    template.getName(),
-                    template.getDescription()
+                    itemDTO.getIdentifier(),
+                    itemDTO.getName(),
+                    itemDTO.getDescription()
                 );
             }
         }
