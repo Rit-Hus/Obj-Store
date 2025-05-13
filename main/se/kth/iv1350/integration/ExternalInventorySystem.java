@@ -8,15 +8,15 @@ import java.util.List;
  * with requested quantities.
  */
 public class ExternalInventorySystem {
-    private final List<ItemDTO> catalog = new ArrayList<>();
+    private final List<ItemDTO> items = new ArrayList<>();
 
     public ExternalInventorySystem() {
-        catalog.add(new ItemDTO(
+        items.add(new ItemDTO(
             29.90, 6, 0,
             "abc123", "BigWheel Oatmeal",
             "BigWheel Oatmeal 500g, whole grain oats, high fiber, gluten free"
         ));
-        catalog.add(new ItemDTO(
+        items.add(new ItemDTO(
             14.90, 6, 0,
             "def456", "YouGoGo Blueberry",
             "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour"
@@ -28,7 +28,7 @@ public class ExternalInventorySystem {
      * or returns null if not found.
      */
     public ItemDTO fetchItemDTO(String itemID, int quantity) {
-        for (ItemDTO template : catalog) {
+        for (ItemDTO template : items) {
             if (template.getIdentifier().equals(itemID)) {
                 return new ItemDTO(
                     template.getPrice(),
