@@ -1,57 +1,78 @@
+// src/main/java/main/se/kth/iv1350/controller/Controller.java
 package main.se.kth.iv1350.controller;
 
 import java.util.ArrayList;
 import main.se.kth.iv1350.integration.ExternalInventorySystem;
+import main.se.kth.iv1350.integration.ItemDTO;
 import main.se.kth.iv1350.integration.Printer;
+import main.se.kth.iv1350.integration.ReceiptDTO;
 import main.se.kth.iv1350.integration.SaleDTO;
 import main.se.kth.iv1350.model.Item;
 import main.se.kth.iv1350.model.Payment;
-import main.se.kth.iv1350.model.Receipt;
 import main.se.kth.iv1350.model.Sale;
 
 /**
  * Manages the sale workflow: starting a sale, adding items, and ending the sale.
  */
 public class Controller {
-    private Sale currentSale;
+    private Sale sale;
     private Printer printer;
     private ExternalInventorySystem inventorySystem;
 
+    /**
+     * @param printer          prints DTOs only
+     * @param inventorySystem  provides ItemDTOs
+     */
     public Controller(Printer printer, ExternalInventorySystem inventorySystem) {
         this.printer = printer;
         this.inventorySystem = inventorySystem;
-        this.currentSale = new Sale();
+        this.sale = new Sale();
     }
 
-
+    /** Starts a new sale. */
     public void startSale() {
-        this.currentSale = new Sale();
+        this.sale = new Sale();
     }
 
     /**
-     * Fetches an item by ID and quantity and prints its details.
+     * Fetches an ItemDTO from integration, prints its details,
+     * converts it to a model.Item, and scans it into the sale.
      *
-     * @param itemID   The item identifier.
-     * @param quantity The quantity to add.
+     * @param itemID   The identifier of the item.
+     * @param quantity The quantity to scan.
      */
     public void addItemToSale(String itemID, int quantity) {
-        Item item = inventorySystem.fetchItem(itemID, quantity);
-        printer.printItemDetails(item);
-        ArrayList<Item> bundle = new ArrayList<>();
-        bundle.add(item);
-        currentSale.scanItems(bundle);
+        ItemDTO dto = inventorySystem.fetchItemDTO(itemID, quantity);
+        if (dto == null) {
+            throw new IllegalArgumentException("Unknown item: " + itemID);
+        }
+
+        printer.printItemDetails(dto);
+
+        Item item = new Item(
+            dto.getPrice(),
+            dto.getVat(),
+            dto.getQuantity(),
+            dto.getIdentifier(),
+            dto.getName(),
+            dto.getDescription()
+        );
+
+        ArrayList<Item> batch = new ArrayList<>();
+        batch.add(item);
+        sale.scanItems(batch);
     }
 
     /**
-     * Ends the sale, calculates change, and prints the receipt.
+     * Ends the sale, builds a SaleDTO, computes change,
+     * wraps into a ReceiptDTO, and prints it.
      *
-     * @param amountPaid The amount the customer pays.
+     * @param amountPaid The amount the customer paid.
      */
     public void endSale(double amountPaid) {
-        SaleDTO saleData = currentSale.createSaleDTO(amountPaid);
-        Payment payment = new Payment();
-        double change = payment.getChange(amountPaid, saleData);
-        Receipt receipt = new Receipt(saleData, change);
-        printer.print(receipt);
+        SaleDTO saleDTO = sale.createSaleDTO(amountPaid);
+        double change = new Payment().getChange(amountPaid, saleDTO);
+        ReceiptDTO receiptDTO = new ReceiptDTO(saleDTO, change);
+        printer.print(receiptDTO);
     }
 }

@@ -2,40 +2,39 @@ package main.se.kth.iv1350.integration;
 
 import java.util.ArrayList;
 import java.util.List;
-import main.se.kth.iv1350.model.Item;
 
 /**
- * Provides item data. Holds a list of available items and returns
- * fresh copies with requested quantities.
+ * Holds a catalog of ItemDTO templates and serves fresh copies
+ * with requested quantities.
  */
 public class ExternalInventorySystem {
-    private List<Item> items = new ArrayList<>();
+    private final List<ItemDTO> catalog = new ArrayList<>();
 
     public ExternalInventorySystem() {
-        items.add(new Item(
-            29.90, 6.0, 0,
+        catalog.add(new ItemDTO(
+            29.90, 6, 0,
             "abc123", "BigWheel Oatmeal",
             "BigWheel Oatmeal 500g, whole grain oats, high fiber, gluten free"
         ));
-        items.add(new Item(
-            14.90, 6.0, 0,
+        catalog.add(new ItemDTO(
+            14.90, 6, 0,
             "def456", "YouGoGo Blueberry",
             "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour"
         ));
     }
 
     /**
-     * Returns a fresh Item copy with the requested quantity.
-     * Returns null if no matching ID is found.
+     * Fetches a new ItemDTO for the given ID and quantity,
+     * or returns null if not found.
      */
-    public Item fetchItem(String itemID, int quantity) {
-        for (Item template : items) {
-            if (template.getItemID().equals(itemID)) {
-                return new Item(
+    public ItemDTO fetchItemDTO(String itemID, int quantity) {
+        for (ItemDTO template : catalog) {
+            if (template.getIdentifier().equals(itemID)) {
+                return new ItemDTO(
                     template.getPrice(),
                     template.getVat(),
                     quantity,
-                    template.getItemID(),
+                    template.getIdentifier(),
                     template.getName(),
                     template.getDescription()
                 );

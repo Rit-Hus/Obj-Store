@@ -39,7 +39,7 @@ public class PrinterTest {
         );
         
 
-        Receipt receipt = new Receipt(dto, 40.20);
+        ReceiptDTO receipt = new ReceiptDTO(dto, 40.20);
         
        
 

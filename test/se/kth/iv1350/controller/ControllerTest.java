@@ -39,7 +39,7 @@ public class ControllerTest {
         controller.scanItems(items); 
         
        
-        Receipt receipt = controller.endSale(50.0);
+        ReceiptDTO receipt = controller.endSale(50.0);
         
         
         assertNotNull("Receipt should not be null", receipt);

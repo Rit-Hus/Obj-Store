@@ -2,6 +2,7 @@ package main.se.kth.iv1350.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import main.se.kth.iv1350.integration.ItemDTO;
 import main.se.kth.iv1350.integration.SaleDTO;
 
 /**
@@ -14,7 +15,7 @@ public class Sale {
     private ArrayList<Item> items = new ArrayList<>();
 
     public Sale() {
-        saleDate = LocalDate.now();
+        this.saleDate = LocalDate.now();
     }
 
     /**
@@ -48,7 +49,24 @@ public class Sale {
         }
     }
 
+    /**
+     * Builds a SaleDTO for integration by converting each model Item into an ItemDTO.
+     *
+     * @param amountPaid The amount paid by the customer.
+     * @return A SaleDTO containing ItemDTOs and sale totals.
+     */
     public SaleDTO createSaleDTO(double amountPaid) {
-        return new SaleDTO(totalVAT, items, saleDate, amountPaid, totalAmount);
+        ArrayList<ItemDTO> dtoItems = new ArrayList<>();
+        for (Item item : items) {
+            dtoItems.add(new ItemDTO(
+                item.getPrice(),
+                (int) item.getVat(),
+                item.getQuantity(),
+                item.getItemID(),
+                item.getName(),
+                item.getDescription()
+            ));
+        }
+        return new SaleDTO(totalVAT, dtoItems, saleDate, amountPaid, totalAmount);
     }
 }
