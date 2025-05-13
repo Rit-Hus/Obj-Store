@@ -41,13 +41,9 @@ public class Controller {
      * @param itemID   The identifier of the item.
      * @param quantity The quantity to scan.
      */
-    public void addItemToSale(String itemID, int quantity) {
+    public ItemDTO addItemToSale(String itemID, int quantity) {
         ItemDTO dto = inventorySystem.fetchItemDTO(itemID, quantity);
-        if (dto == null) {
-            throw new IllegalArgumentException("Unknown item: " + itemID);
-        }
 
-        printer.printItemDetails(dto);
 
         Item item = new Item(
             dto.getPrice(),
@@ -61,6 +57,8 @@ public class Controller {
         ArrayList<Item> batch = new ArrayList<>();
         batch.add(item);
         sale.scanItems(batch);
+
+        return dto;
     }
 
     /**

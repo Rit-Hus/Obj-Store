@@ -44,7 +44,7 @@ public class Printer {
         System.out.println(sb.toString());
     }
 
-    private String formatPrice(double price) {
+    public String formatPrice(double price) {
         return String.format("%.2f", price).replace('.', ',');
     }
 }

@@ -13,7 +13,7 @@ public class Main {
         Printer printer = new Printer();
         ExternalInventorySystem inventorySystem = new ExternalInventorySystem();
         Controller controller = new Controller(printer, inventorySystem);
-        View view = new View(controller);
+        View view = new View(controller, printer);
         view.run();
     }
 }
