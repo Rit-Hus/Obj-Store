@@ -22,20 +22,18 @@ public class View {
     public void run() {
         controller.startSale();
 
-        // 1) First scan: valid item
+
         try {
             ItemDTO dto1 = controller.addItemToSale("abc123", 1);
             printItemDetails(dto1);
         } catch (ItemNotFoundException e) {
             System.out.println("Sorry, that item ID does not exist.\n");
-            // error details go to errors.log
             FileLogger.log(e);
         } catch (InventoryAccessException e) {
             System.out.println("A system error occurred. Please try again later.\n");
             FileLogger.log(e);
         }
 
-        // 2) Second scan: same valid item
         try {
             ItemDTO dto2 = controller.addItemToSale("abc123", 1);
             printItemDetails(dto2);
@@ -47,7 +45,6 @@ public class View {
             FileLogger.log(e);
         }
 
-        // 3) Third scan: different valid item
         try {
             ItemDTO dto3 = controller.addItemToSale("def456", 1);
             printItemDetails(dto3);
@@ -59,7 +56,6 @@ public class View {
             FileLogger.log(e);
         }
 
-        // 4) Fourth scan: non-existent ID → ItemNotFoundException
         try {
             controller.addItemToSale("noSuchID", 1);
         } catch (ItemNotFoundException e) {
@@ -70,7 +66,6 @@ public class View {
             FileLogger.log(e);
         }
 
-        // 5) Fifth scan: simulated DB error → InventoryAccessException
         try {
             controller.addItemToSale("dbError", 1);
         } catch (ItemNotFoundException e) {
@@ -81,7 +76,6 @@ public class View {
             FileLogger.log(e);
         }
 
-        // Finish sale (only the successful scans—two abc123 and one def456—will be on the receipt)
         controller.endSale(100.00);
     }
 

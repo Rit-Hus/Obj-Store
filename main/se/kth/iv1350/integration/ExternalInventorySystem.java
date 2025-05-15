@@ -4,20 +4,30 @@ package main.se.kth.iv1350.integration;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- * Holds a catalog of ItemDTO templates and serves fresh copies
- * with requested quantities—or throws exceptions on errors.
+ * Singleton ExternalInventorySystem: holds a catalog of ItemDTO templates
+ * and serves fresh copies with requested quantities.
  */
 public class ExternalInventorySystem {
-    private final List<ItemDTO> items = new ArrayList<>();
+    // Eager‐initialized singleton instance
+    private static final ExternalInventorySystem INSTANCE = new ExternalInventorySystem();
 
-    public ExternalInventorySystem() {
-        items.add(new ItemDTO(
+    /** Use getInstance() to obtain the sole ExternalInventorySystem. */
+    public static ExternalInventorySystem getInstance() {
+        return INSTANCE;
+    }
+
+    private final List<ItemDTO> catalog = new ArrayList<>();
+
+    // Private constructor prevents any other instantiation
+    private ExternalInventorySystem() {
+        catalog.add(new ItemDTO(
             29.90, 6, 0,
             "abc123", "BigWheel Oatmeal",
             "BigWheel Oatmeal 500g, whole grain oats, high fiber, gluten free"
         ));
-        items.add(new ItemDTO(
+        catalog.add(new ItemDTO(
             14.90, 6, 0,
             "def456", "YouGoGo Blueberry",
             "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour"
@@ -25,23 +35,16 @@ public class ExternalInventorySystem {
     }
 
     /**
-     * @param itemID   The identifier to look up.
-     * @param quantity The requested quantity.
-     * @return A fresh ItemDTO copy.
-     * @throws InventoryAccessException If itemID equals "dbError".
-     * @throws ItemNotFoundException    If no matching ID is found.
+     * Fetches a new ItemDTO for the given ID and quantity,
+     * or throws if not found or on simulated database failure.
      */
     public ItemDTO fetchItemDTO(String itemID, int quantity)
-            throws InventoryAccessException, ItemNotFoundException {
-
-        // Simulate a database failure for this special ID
+            throws ItemNotFoundException, InventoryAccessException {
         if ("dbError".equals(itemID)) {
-            throw new InventoryAccessException(itemID,
-                new RuntimeException("Simulated connection failure"));
+            throw new InventoryAccessException("Simulated database failure for: " + itemID);
         }
 
-        // Normal lookup
-        for (ItemDTO template : items) {
+        for (ItemDTO template : catalog) {
             if (template.getIdentifier().equals(itemID)) {
                 return new ItemDTO(
                     template.getPrice(),
@@ -53,8 +56,6 @@ public class ExternalInventorySystem {
                 );
             }
         }
-
-        // Not found → exception
-        throw new ItemNotFoundException(itemID);
+        throw new ItemNotFoundException("Item not found: " + itemID);
     }
 }

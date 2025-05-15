@@ -1,12 +1,16 @@
-// src/main/java/main/se/kth/iv1350/integration/InventoryAccessException.java
 package main.se.kth.iv1350.integration;
 
 /**
- * Thrown when the inventory system cannot be accessed
- * (simulated database failure).
+ * Thrown when the inventory system experiences a simulated database failure.
  */
 public class InventoryAccessException extends Exception {
-    public InventoryAccessException(String itemID, Throwable cause) {
-        super("Inventory access failure for item: " + itemID, cause);
+    /** Single‐arg constructor so you can throw by message only */
+    public InventoryAccessException(String message) {
+        super(message);
+    }
+
+    /** Two‐arg constructor if you want to wrap a cause later */
+    public InventoryAccessException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

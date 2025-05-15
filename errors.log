@@ -1,30 +1,12 @@
-2025-05-14T14:21:27.209644: Exception: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: noSuchID
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:58)
+2025-05-15T11:25:19.688564500: Exception: Item not found: Item not found: noSuchID
+main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
+	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:59)
 	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:58)
 	at main.se.kth.iv1350.view.View.run(View.java:64)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-14T14:21:27.210767: Exception: Inventory access failure for item: dbError
-main.se.kth.iv1350.integration.InventoryAccessException: Inventory access failure for item: dbError
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:39)
+	at main.se.kth.iv1350.startup.Main.main(Main.java:23)
+2025-05-15T11:25:19.689567900: Exception: Simulated database failure for: dbError
+main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
+	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:44)
 	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:58)
 	at main.se.kth.iv1350.view.View.run(View.java:75)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-Caused by: java.lang.RuntimeException: Simulated connection failure
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:40)
-	... 3 more
-2025-05-14T14:26:26.545416: Exception: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: noSuchID
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:58)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:58)
-	at main.se.kth.iv1350.view.View.run(View.java:64)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-14T14:26:26.546827: Exception: Inventory access failure for item: dbError
-main.se.kth.iv1350.integration.InventoryAccessException: Inventory access failure for item: dbError
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:39)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:58)
-	at main.se.kth.iv1350.view.View.run(View.java:75)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-Caused by: java.lang.RuntimeException: Simulated connection failure
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:40)
-	... 3 more
+	at main.se.kth.iv1350.startup.Main.main(Main.java:23)

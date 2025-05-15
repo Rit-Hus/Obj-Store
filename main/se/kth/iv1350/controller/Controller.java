@@ -74,13 +74,15 @@ public class Controller {
      * Ends the sale: builds a SaleDTO, computes change, wraps into ReceiptDTO, prints it,
      * and then notifies all registered observers.
      */
-    public void endSale(double amountPaid) {
+    public ReceiptDTO endSale(double amountPaid) {
         SaleDTO saleDTO = sale.createSaleDTO(amountPaid);
         double change = new Payment().getChange(amountPaid, saleDTO);
         ReceiptDTO receiptDTO = new ReceiptDTO(saleDTO, change);
         printer.print(receiptDTO);
 
         notifyObservers(saleDTO.getTotalAmount());
+
+        return receiptDTO;
     }
 
     /**
