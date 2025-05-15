@@ -13,7 +13,6 @@ import main.se.kth.iv1350.util.FileLogger;
 public class View {
     private final Controller controller;
     private final Printer printer;
-    private final FileLogger logger = new FileLogger();
 
     public View(Controller controller, Printer printer) {
         this.controller = controller;
@@ -29,10 +28,11 @@ public class View {
             printItemDetails(dto1);
         } catch (ItemNotFoundException e) {
             System.out.println("Sorry, that item ID does not exist.\n");
-            logger.log("Unknown item requested: abc123", e);
+            // error details go to errors.log
+            FileLogger.log(e);
         } catch (InventoryAccessException e) {
             System.out.println("A system error occurred. Please try again later.\n");
-            logger.log("Inventory access failure for abc123", e);
+            FileLogger.log(e);
         }
 
         // 2) Second scan: same valid item
@@ -41,10 +41,10 @@ public class View {
             printItemDetails(dto2);
         } catch (ItemNotFoundException e) {
             System.out.println("Sorry, that item ID does not exist.\n");
-            logger.log("Unknown item requested: abc123", e);
+            FileLogger.log(e);
         } catch (InventoryAccessException e) {
             System.out.println("A system error occurred. Please try again later.\n");
-            logger.log("Inventory access failure for abc123", e);
+            FileLogger.log(e);
         }
 
         // 3) Third scan: different valid item
@@ -53,10 +53,10 @@ public class View {
             printItemDetails(dto3);
         } catch (ItemNotFoundException e) {
             System.out.println("Sorry, that item ID does not exist.\n");
-            logger.log("Unknown item requested: def456", e);
+            FileLogger.log(e);
         } catch (InventoryAccessException e) {
             System.out.println("A system error occurred. Please try again later.\n");
-            logger.log("Inventory access failure for def456", e);
+            FileLogger.log(e);
         }
 
         // 4) Fourth scan: non-existent ID → ItemNotFoundException
@@ -64,10 +64,10 @@ public class View {
             controller.addItemToSale("noSuchID", 1);
         } catch (ItemNotFoundException e) {
             System.out.println("Sorry, that item ID does not exist.\n");
-            logger.log("Unknown item requested: noSuchID", e);
+            FileLogger.log(e);
         } catch (InventoryAccessException e) {
             System.out.println("A system error occurred. Please try again later.\n");
-            logger.log("Inventory access failure for noSuchID", e);
+            FileLogger.log(e);
         }
 
         // 5) Fifth scan: simulated DB error → InventoryAccessException
@@ -75,10 +75,10 @@ public class View {
             controller.addItemToSale("dbError", 1);
         } catch (ItemNotFoundException e) {
             System.out.println("Sorry, that item ID does not exist.\n");
-            logger.log("Unknown item requested: dbError", e);
+            FileLogger.log(e);
         } catch (InventoryAccessException e) {
             System.out.println("A system error occurred. Please try again later.\n");
-            logger.log("Inventory access failure for dbError", e);
+            FileLogger.log(e);
         }
 
         // Finish sale (only the successful scans—two abc123 and one def456—will be on the receipt)
