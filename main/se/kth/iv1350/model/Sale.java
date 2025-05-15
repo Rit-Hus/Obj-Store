@@ -69,4 +69,8 @@ public class Sale {
         }
         return new SaleDTO(totalVAT, dtoItems, saleDate, amountPaid, totalAmount);
     }
+
+    public LocalDate getSaleDate(){
+        return saleDate;
+    }
 }
