@@ -2,6 +2,9 @@ package main.se.kth.iv1350.integration;
 
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Prints ItemDTO details and ReceiptDTO to System.out.
+ */
 public class Printer {
     public Printer() { }
 
