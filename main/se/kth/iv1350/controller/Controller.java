@@ -11,8 +11,8 @@ import main.se.kth.iv1350.integration.ReceiptDTO;
 import main.se.kth.iv1350.integration.SaleDTO;
 import main.se.kth.iv1350.model.Item;
 import main.se.kth.iv1350.model.Payment;
+import main.se.kth.iv1350.model.RevenueObserver;
 import main.se.kth.iv1350.model.Sale;
-import main.se.kth.iv1350.observer.RevenueObserver;
 
 /**
  * Manages the sale workflow: starting a sale, fetching and scanning items,

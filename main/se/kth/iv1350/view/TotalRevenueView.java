@@ -1,7 +1,7 @@
 // src/main/java/main/se/kth/iv1350/view/TotalRevenueView.java
 package main.se.kth.iv1350.view;
 
-import main.se.kth.iv1350.observer.RevenueObserver;
+import main.se.kth.iv1350.model.RevenueObserver;
 
 /**
  * View‐layer observer that prints cumulative revenue to the console.

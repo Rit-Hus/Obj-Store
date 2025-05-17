@@ -1,6 +1,6 @@
 package main.se.kth.iv1350.integration;
 
-import main.se.kth.iv1350.observer.RevenueObserver;
+import main.se.kth.iv1350.model.RevenueObserver;
 import main.se.kth.iv1350.util.FileLogger;
 
 /**
