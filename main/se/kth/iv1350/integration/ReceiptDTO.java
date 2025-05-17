@@ -3,9 +3,6 @@ package main.se.kth.iv1350.integration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-/**
- * DTO for printing a receipt: wraps a SaleDTO plus the computed change.
- */
 public class ReceiptDTO {
     private final double totalVAT;
     private final double totalPrice;

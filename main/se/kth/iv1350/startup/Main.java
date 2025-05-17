@@ -1,8 +1,7 @@
-// src/main/java/main/se/kth/iv1350/startup/Main.java
 package main.se.kth.iv1350.startup;
 
 import main.se.kth.iv1350.controller.Controller;
-import main.se.kth.iv1350.integration.ExternalInventorySystem;  // singleton
+import main.se.kth.iv1350.integration.ExternalInventorySystem;
 import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.integration.TotalRevenueFileOutput;
 import main.se.kth.iv1350.view.TotalRevenueView;
@@ -15,9 +14,8 @@ public class Main {
         ExternalInventorySystem inventorySystem = ExternalInventorySystem.getInstance();
         Controller controller = new Controller(printer, inventorySystem);
 
-
-        controller.addObserver(new TotalRevenueView());
-        controller.addObserver(new TotalRevenueFileOutput());
+        controller.addRevenueObserver(new TotalRevenueView());
+        controller.addRevenueObserver(new TotalRevenueFileOutput());
 
         View view = new View(controller, printer);
         view.run();

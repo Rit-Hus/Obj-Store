@@ -2,63 +2,81 @@ package main.se.kth.iv1350.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import main.se.kth.iv1350.integration.ItemDTO;
+import java.util.List;
+
 import main.se.kth.iv1350.integration.SaleDTO;
 
-/**
- * Represents a sale: date, total, VAT, and list of items.
- */
+
 public class Sale {
     private LocalDate saleDate;
     private double totalAmount;
     private double totalVAT;
     private ArrayList<Item> items = new ArrayList<>();
 
-    public Sale() {
-        this.saleDate = LocalDate.now();
+    private final List<RevenueObserver> observers = new ArrayList<>();
+
+    public void addObserver(RevenueObserver obs) {
+        observers.add(obs);
     }
 
-    /**
-     * Scans new items: increments quantity on existing ones,
-     * or adds new items, then updates totals.
-     */
-    public void scanItems(ArrayList<Item> newItems) {
-        for (Item scanned : newItems) {
-            boolean found = false;
-            for (Item existing : items) {
-                if (existing.getItemID().equals(scanned.getItemID())) {
-                    existing.incrementQuantity();
-                    found = true;
+    public void removeObserver(RevenueObserver obs) {
+        observers.remove(obs);
+    }
+
+    private void notifyObservers(double saleAmount) {
+        for (RevenueObserver obs : observers) {
+            obs.onNewSale(saleAmount);
+        }
+    }
+
+
+    public Sale() {
+        saleDate = LocalDate.now();
+    }
+
+
+public void scanItems(ArrayList<Item> newItems) {
+    for (Item item : newItems) {
+        if (isScanned(item.getItemID())) {
+            for (Item stored : items) {
+                if (stored.getItemID().equals(item.getItemID())) {
+                    stored.incrementQuantity();
                     break;
                 }
             }
-            if (!found) {
-                items.add(scanned);
+        } else {
+            this.items.add(item);
+        }
+    }
+    updateTotal();
+}
+
+    private boolean isScanned(String itemID) {
+        for (Item item : items) {
+            if (item.getItemID().equals(itemID)) {
+                return true;
             }
         }
-        updateTotal();
+        return false;
     }
 
     private void updateTotal() {
         totalAmount = 0;
-        totalVAT = 0;
+        totalVAT    = 0;
+
         for (Item item : items) {
             double itemTotal = item.getQuantity() * item.getPrice();
             totalAmount += itemTotal;
-            totalVAT += itemTotal * (item.getVat() / 100);
+            totalVAT    += itemTotal * (item.getVat() / 100);
         }
     }
 
-    /**
-     * Builds a SaleDTO for integration by converting each model Item into an ItemDTO.
-     *
-     * @param amountPaid The amount paid by the customer.
-     * @return A SaleDTO containing ItemDTOs and sale totals.
-     */
+
     public SaleDTO createSaleDTO(double amountPaid) {
-        ArrayList<ItemDTO> dtoItems = new ArrayList<>();
+
+        ArrayList<main.se.kth.iv1350.integration.ItemDTO> dtoItems = new ArrayList<>();
         for (Item item : items) {
-            dtoItems.add(new ItemDTO(
+            dtoItems.add(new main.se.kth.iv1350.integration.ItemDTO(
                 item.getPrice(),
                 (int) item.getVat(),
                 item.getQuantity(),
@@ -67,10 +85,24 @@ public class Sale {
                 item.getDescription()
             ));
         }
-        return new SaleDTO(totalVAT, dtoItems, saleDate, amountPaid, totalAmount);
+
+        SaleDTO dto = new SaleDTO(
+            totalVAT,
+            dtoItems,
+            saleDate,
+            amountPaid,
+            totalAmount
+        );
+
+
+        notifyObservers(totalAmount);
+
+        return dto;
     }
 
     public LocalDate getSaleDate(){
         return saleDate;
     }
+
+
 }

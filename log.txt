@@ -1,7 +1,0 @@
-Cumulative revenue: 74,70 SEK
-java.lang.Exception: Revenue update
-	at main.se.kth.iv1350.integration.TotalRevenueFileOutput.onNewSale(TotalRevenueFileOutput.java:21)
-	at main.se.kth.iv1350.controller.Controller.notifyObservers(Controller.java:91)
-	at main.se.kth.iv1350.controller.Controller.endSale(Controller.java:83)
-	at main.se.kth.iv1350.view.View.run(View.java:85)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)

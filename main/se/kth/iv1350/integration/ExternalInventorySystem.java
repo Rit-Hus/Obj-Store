@@ -1,26 +1,18 @@
-// src/main/java/main/se/kth/iv1350/integration/ExternalInventorySystem.java
 package main.se.kth.iv1350.integration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * Singleton ExternalInventorySystem: holds a catalog of ItemDTO templates
- * and serves fresh copies with requested quantities.
- */
 public class ExternalInventorySystem {
-    // Eager‐initialized singleton instance
     private static final ExternalInventorySystem INSTANCE = new ExternalInventorySystem();
 
-    /** Use getInstance() to obtain the sole ExternalInventorySystem. */
     public static ExternalInventorySystem getInstance() {
         return INSTANCE;
     }
 
     private final List<ItemDTO> catalog = new ArrayList<>();
 
-    // Private constructor prevents any other instantiation
     private ExternalInventorySystem() {
         catalog.add(new ItemDTO(
             29.90, 6, 0,
@@ -34,10 +26,6 @@ public class ExternalInventorySystem {
         ));
     }
 
-    /**
-     * Fetches a new ItemDTO for the given ID and quantity,
-     * or throws if not found or on simulated database failure.
-     */
     public ItemDTO fetchItemDTO(String itemID, int quantity)
             throws ItemNotFoundException, InventoryAccessException {
         if ("dbError".equals(itemID)) {

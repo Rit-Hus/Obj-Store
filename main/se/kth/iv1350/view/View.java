@@ -7,9 +7,6 @@ import main.se.kth.iv1350.integration.ItemNotFoundException;
 import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.util.FileLogger;
 
-/**
- * Drives a hardcoded sale scenario with exception handling.
- */
 public class View {
     private final Controller controller;
     private final Printer printer;

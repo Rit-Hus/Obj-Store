@@ -3,10 +3,7 @@ package main.se.kth.iv1350.integration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-/**
- * DTO capturing a completed sale:
- * total VAT, line-items as ItemDTOs, date, paid and total amounts.
- */
+
 public class SaleDTO {
     private final double VAT;
     private final ArrayList<ItemDTO> items;
