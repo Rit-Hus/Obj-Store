@@ -1,118 +1,22 @@
-2025-05-17T11:20:43.992130100: Exception: Item not found: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:59)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:60)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:20:43.992130100: Exception: Simulated database failure for: dbError
-main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:44)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:70)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:43:29.585076300: Exception: Item not found: Item not found: noSuchID
+2025-05-17T12:11:43.806356200: Exception: Item not found: Item not found: noSuchID
 main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
 	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:47)
 	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
 	at main.se.kth.iv1350.view.View.run(View.java:57)
 	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:43:29.585076300: Exception: Simulated database failure for: dbError
+2025-05-17T12:11:43.807392400: Exception: Simulated database failure for: dbError
 main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
 	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:32)
 	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
 	at main.se.kth.iv1350.view.View.run(View.java:67)
 	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:47:05.127442500: Exception: Item not found: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
+2025-05-17T12:12:06.717461300: Exception: Item not found: noSuchID
+main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: noSuchID
 	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:47)
 	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
 	at main.se.kth.iv1350.view.View.run(View.java:57)
 	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:47:05.127442500: Exception: Simulated database failure for: dbError
-main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:32)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:67)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:47:13.857579800: Exception: Item not found: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:47)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:57)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:47:13.857579800: Exception: Simulated database failure for: dbError
-main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:32)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:67)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:47:23.194079500: Exception: Item not found: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:47)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:57)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:47:23.194590800: Exception: Simulated database failure for: dbError
-main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:32)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:67)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:51:22.582664500: Exception: Item not found: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:47)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:57)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:51:22.583684100: Exception: Simulated database failure for: dbError
-main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:32)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:67)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:51:27.571820900: Exception: Item not found: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:47)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:57)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:51:27.571820900: Exception: Simulated database failure for: dbError
-main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:32)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:67)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:51:32.237834800: Exception: Item not found: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:47)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:57)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:51:32.239097800: Exception: Simulated database failure for: dbError
-main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:32)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:67)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:52:03.687836700: Exception: Item not found: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:47)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:57)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:52:03.687836700: Exception: Simulated database failure for: dbError
-main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:32)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:67)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:52:09.391856600: Exception: Item not found: Item not found: noSuchID
-main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: Item not found: noSuchID
-	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:47)
-	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)
-	at main.se.kth.iv1350.view.View.run(View.java:57)
-	at main.se.kth.iv1350.startup.Main.main(Main.java:21)
-2025-05-17T11:52:09.392875800: Exception: Simulated database failure for: dbError
+2025-05-17T12:12:06.717461300: Exception: Simulated database failure for: dbError
 main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
 	at main.se.kth.iv1350.integration.ExternalInventorySystem.fetchItemDTO(ExternalInventorySystem.java:32)
 	at main.se.kth.iv1350.controller.Controller.addItemToSale(Controller.java:40)

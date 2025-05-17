@@ -16,7 +16,7 @@ public class BulkDiscountStrategy implements DiscountStrategy {
         this.discountRate = discountRate;
     }
 
-    @Override
+
     public double applyDiscount(double basePrice, int quantity) {
         double total = basePrice * quantity;
         if (quantity > threshold) {

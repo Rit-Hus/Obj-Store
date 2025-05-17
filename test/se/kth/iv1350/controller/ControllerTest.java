@@ -1,4 +1,3 @@
-// src/test/java/main/se/kth/iv1350/controller/ControllerTest.java
 package test.se.kth.iv1350.controller;
 
 import main.se.kth.iv1350.integration.ExternalInventorySystem;
@@ -29,8 +28,8 @@ class ControllerTest {
 
     @Test
     void endSaleComputesReceiptCorrectly() throws Exception {
-        ctrl.addItemToSale("abc123", 2); // 2×29.90 = 59.80
-        ctrl.addItemToSale("def456", 1); // 1×14.90 = 14.90
+        ctrl.addItemToSale("abc123", 2);
+        ctrl.addItemToSale("def456", 1); 
         ReceiptDTO receipt = ctrl.endSale(100.0);
 
         double expectedTotal = 59.80 + 14.90;
