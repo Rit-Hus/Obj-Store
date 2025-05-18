@@ -17,6 +17,13 @@ public class BulkDiscountStrategy implements DiscountStrategy {
     }
 
 
+    /**
+     * Applies the bulk discount to the total price based on the quantity purchased.
+     *
+     * @param basePrice The base price of the item.
+     * @param quantity  The quantity of items purchased.
+     * @return The total price after applying the discount, if applicable.
+     */
     public double applyDiscount(double basePrice, int quantity) {
         double total = basePrice * quantity;
         if (quantity > threshold) {

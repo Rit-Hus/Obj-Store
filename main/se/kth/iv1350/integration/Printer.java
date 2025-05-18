@@ -16,7 +16,11 @@ public class Printer {
         System.out.println("Item description: " + item.getDescription());
         System.out.println();
     }
-
+/**
+     * Prints the receipt to System.out.
+     *
+     * @param receipt The receipt to print.
+     */
     public void print(ReceiptDTO receipt) {
         StringBuilder sb = new StringBuilder();
         sb.append("\n--- Begin receipt ---\n")
@@ -44,6 +48,13 @@ public class Printer {
         System.out.println(sb.toString());
     }
 
+    /**
+     * Formats a price to two decimal places and replaces the decimal point with a
+     * comma.
+     *
+     * @param price The price to format.
+     * @return The formatted price as a string.
+     */
     public String formatPrice(double price) {
         return String.format("%.2f", price).replace('.', ',');
     }

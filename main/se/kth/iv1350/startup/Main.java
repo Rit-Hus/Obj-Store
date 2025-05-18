@@ -7,6 +7,7 @@ import main.se.kth.iv1350.integration.TotalRevenueFileOutput;
 import main.se.kth.iv1350.view.TotalRevenueView;
 import main.se.kth.iv1350.view.View;
 
+
 public class Main {
     public static void main(String[] args) {
         Printer printer = new Printer();

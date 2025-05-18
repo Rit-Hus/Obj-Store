@@ -7,6 +7,11 @@ import main.se.kth.iv1350.integration.ItemNotFoundException;
 import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.util.FileLogger;
 
+
+/**
+ * The View class represents the user interface of the application. It interacts
+ * with the controller to perform operations and displays the results to the user.
+ */
 public class View {
     private final Controller controller;
     private final Printer printer;
@@ -15,7 +20,10 @@ public class View {
         this.controller = controller;
         this.printer = printer;
     }
-
+/**
+     * Starts the application and simulates a sale by adding items to the sale and
+     * printing their details.
+     */
     public void run() {
         controller.startSale();
 
@@ -75,7 +83,11 @@ public class View {
 
         controller.endSale(100.00);
     }
-
+/**
+     * Prints the details of an item to the console.
+     *
+     * @param item The item to print.
+     */
     public void printItemDetails(ItemDTO item) {
         System.out.println("Item ID: "         + item.getIdentifier());
         System.out.println("Item name: "       + item.getName());
