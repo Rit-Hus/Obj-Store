@@ -13,6 +13,10 @@ import main.se.kth.iv1350.model.Item;
 class ItemTest {
     private Item item;
 
+    /**
+     * This method is called before each test case to set up the initial state of the item.
+     * It creates a new Item object with predefined values.
+     */
     @BeforeEach
     void setUp() {
 
@@ -26,6 +30,9 @@ class ItemTest {
         );
     }
 
+    /**
+     * Test to verify that the initial quantity of the item is set to 1.
+     */
     @Test
     void incrementQuantityIncreasesCount() {
         assertEquals(1, item.getQuantity());
@@ -33,7 +40,9 @@ class ItemTest {
         assertEquals(2, item.getQuantity(), 
             "incrementQuantity() should add 1 to quantity");
     }
-
+/**
+     * Test to verify that the quantity can be incremented multiple times.
+     */
     @Test
     void gettersReturnConstructorValues() {
         assertEquals(29.90, item.getPrice(), 1e-6);
