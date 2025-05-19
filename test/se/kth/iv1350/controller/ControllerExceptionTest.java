@@ -10,9 +10,18 @@ import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.integration.ItemNotFoundException;
 import main.se.kth.iv1350.integration.InventoryAccessException;
 
+/**
+ * This class contains tests for the Controller class, specifically focusing on
+ * exception handling.
+ */
 public class ControllerExceptionTest {
     private Controller ctrl;
 
+
+    /**
+     * Sets up the test environment before each test case.
+     * Initializes a Controller instance with a Printer and an ExternalInventorySystem.
+     */
     @Before
     public void setUp() {
         Printer printer = new Printer();
@@ -21,6 +30,11 @@ public class ControllerExceptionTest {
         ctrl.startSale();
     }
 
+
+    /**
+     * Tests the addItemToSale method when an item with an unknown ID is added.
+     * Expects an ItemNotFoundException to be thrown.
+     */
     @Test
     public void addItemToSale_unknownId_throwsItemNotFoundException() throws Exception {
         try {
@@ -32,6 +46,11 @@ public class ControllerExceptionTest {
         fail("Expected ItemNotFoundException");
     }
 
+
+    /**
+     * Tests the addItemToSale method when a database error occurs.
+     * Expects an InventoryAccessException to be thrown.
+     */
     @Test
     public void addItemToSale_dbError_throwsInventoryAccessException() throws Exception {
         try {

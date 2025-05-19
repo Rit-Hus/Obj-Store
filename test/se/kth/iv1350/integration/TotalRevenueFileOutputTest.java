@@ -9,14 +9,26 @@ import java.util.List;
 
 import main.se.kth.iv1350.integration.TotalRevenueFileOutput;
 
+/**
+ * This class contains tests for the TotalRevenueFileOutput class, specifically focusing on
+ * the functionality of writing cumulative revenue to a log file.
+ */
 public class TotalRevenueFileOutputTest {
     private static final String LOG_FILE = "revenue.log";
 
+    /**
+     * Sets up the test environment before each test case.
+     * It ensures that the log file is deleted before running the tests.
+     */
     @Before
     public void clearLog() throws Exception {
         Files.deleteIfExists(Paths.get(LOG_FILE));
     }
 
+    /**
+     * Tests the onNewSale method to ensure it writes the correct cumulative revenue to the log file.
+     * It verifies that the log file contains the expected lines after multiple sales.
+     */
     @Test
     public void onNewSale_writesCumulativeLines() throws Exception {
         TotalRevenueFileOutput out = new TotalRevenueFileOutput();

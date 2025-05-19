@@ -11,9 +11,18 @@ import main.se.kth.iv1350.integration.ReceiptDTO;
 import main.se.kth.iv1350.integration.ItemNotFoundException;
 import main.se.kth.iv1350.integration.InventoryAccessException;
 
+/**
+ * This class contains tests for the Controller class, specifically focusing on
+ * the integrity of the sale state after exceptions are thrown.
+ */
 public class SaleStateIntegrityTest {
     private Controller ctrl;
 
+
+    /**
+     * Sets up the test environment before each test case.
+     * Initializes a Controller instance with a Printer and an ExternalInventorySystem.
+     */
     @Before
     public void setUp() {
         Printer printer = new Printer();
@@ -22,6 +31,11 @@ public class SaleStateIntegrityTest {
         ctrl.startSale();
     }
 
+
+    /**
+     * Tests the sale state after an ItemNotFoundException is thrown.
+     * Verifies that no items are added to the sale and the total price is 0.
+     */
     @Test
     public void saleState_afterItemNotFoundException_noItemsAdded() throws Exception {
         try {
@@ -35,7 +49,10 @@ public class SaleStateIntegrityTest {
         }
         fail("Expected ItemNotFoundException");
     }
-
+/**
+     * Tests the sale state after an InventoryAccessException is thrown.
+     * Verifies that no items are added to the sale and the total price is 0.
+     */
     @Test
     public void saleState_afterDbErrorException_noItemsAdded() throws Exception {
         try {

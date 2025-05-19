@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import main.se.kth.iv1350.integration.*;;
 
+/**
+ * This class contains tests for the ExternalInventorySystem class, specifically focusing on
+ * the main functionality of fetching item data.
+ */
 class ExternalInventorySystemTest {
     private final ExternalInventorySystem eis = ExternalInventorySystem.getInstance();
 

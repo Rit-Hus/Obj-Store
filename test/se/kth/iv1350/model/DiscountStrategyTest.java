@@ -8,9 +8,18 @@ import main.se.kth.iv1350.model.DiscountStrategy;
 import main.se.kth.iv1350.model.NoDiscountStrategy;
 import main.se.kth.iv1350.model.BulkDiscountStrategy;
 
+
+/**
+ * This class contains tests for the DiscountStrategy class and its implementations.
+ * It verifies the behavior of different discount strategies.
+ */
 public class DiscountStrategyTest {
 
 
+    /**
+     * Tests the NoDiscountStrategy class to ensure it applies the full price without any discount.
+     * It verifies that the applyDiscount method returns the correct total price.
+     */
     @Test
     public void noDiscountStrategy_appliesFullPrice() {
         DiscountStrategy strat = new NoDiscountStrategy();
@@ -21,6 +30,11 @@ public class DiscountStrategyTest {
                      expected, strat.applyDiscount(price, quantity), 1e-3);
     }
 
+
+    /**
+     * Tests the BulkDiscountStrategy class to ensure it applies a discount when the quantity exceeds a threshold.
+     * It verifies that the applyDiscount method returns the correct total price with the discount applied.
+     */
     @Test
     public void bulkDiscountStrategy_belowThreshold_noDiscount() {
         int    threshold = 10;
@@ -34,6 +48,10 @@ public class DiscountStrategyTest {
                      expected, strat.applyDiscount(price, quantity), 1e-3);
     }
 
+    /**
+     * Tests the BulkDiscountStrategy class to ensure it applies a discount when the quantity exceeds a threshold.
+     * It verifies that the applyDiscount method returns the correct total price with the discount applied.
+     */
     @Test
     public void bulkDiscountStrategy_aboveThreshold_appliesDiscount() {
         int    threshold = 10;

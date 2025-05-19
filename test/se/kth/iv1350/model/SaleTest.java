@@ -12,6 +12,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * This class contains tests for the Sale class.
+ * It verifies the behavior of the scanItems method and the createSaleDTO method.
+ */
 class SaleTest {
     private Sale sale;
 

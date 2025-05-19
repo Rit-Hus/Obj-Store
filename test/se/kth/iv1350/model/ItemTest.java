@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import main.se.kth.iv1350.model.Item;
 
+
+/**
+ * This class contains tests for the Item class.
+ * It verifies the behavior of the Item class, including quantity incrementing and getter methods.
+ */
 class ItemTest {
     private Item item;
 

@@ -10,6 +10,12 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * This class contains tests for the Payment class.
+ * It verifies the behavior of the getChange method, ensuring it calculates the correct change
+ * based on the amount paid and the total amount of the sale.
+ */
 class PaymentTest {
     @Test
     void changeIsPositiveWhenPaidOverTotal() {
