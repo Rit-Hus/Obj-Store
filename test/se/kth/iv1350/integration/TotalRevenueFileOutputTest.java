@@ -19,6 +19,7 @@ public class TotalRevenueFileOutputTest {
     /**
      * Sets up the test environment before each test case.
      * It ensures that the log file is deleted before running the tests.
+     * @throws Exception if an I/O error occurs while deleting the log file
      */
     @Before
     public void clearLog() throws Exception {
@@ -28,6 +29,7 @@ public class TotalRevenueFileOutputTest {
     /**
      * Tests the onNewSale method to ensure it writes the correct cumulative revenue to the log file.
      * It verifies that the log file contains the expected lines after multiple sales.
+     * @throws Exception if reading or writing the log file fails
      */
     @Test
     public void onNewSale_writesCumulativeLines() throws Exception {

@@ -24,7 +24,7 @@ class PaymentTest {
      * It verifies that the change is positive when paid more than the total.
      */
     @Test
-    void changeIsPositiveWhenPaidOverTotal() {
+    public void changeIsPositiveWhenPaidOverTotal() {
 
         double vat         = 0.0;
         ArrayList<ItemDTO> items      = new ArrayList<>();
@@ -47,7 +47,7 @@ class PaymentTest {
      * It verifies that the change is zero when paid exactly.
      */
     @Test
-    void changeIsZeroWhenExactPayment() {
+    public void changeIsZeroWhenExactPayment() {
         SaleDTO sale = new SaleDTO(
             0.0,
             new ArrayList<>(),
@@ -66,7 +66,7 @@ class PaymentTest {
      * It verifies that the change is negative when underpaid.
      */
     @Test
-    void changeIsNegativeWhenUnderpaid() {
+    public void changeIsNegativeWhenUnderpaid() {
         SaleDTO sale = new SaleDTO(
             0.0,
             new ArrayList<>(),

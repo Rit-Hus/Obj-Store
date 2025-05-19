@@ -18,7 +18,7 @@ class ItemTest {
      * It creates a new Item object with predefined values.
      */
     @BeforeEach
-    void setUp() {
+    public void setUp() {
 
         item = new Item(
             29.90,    
@@ -34,7 +34,7 @@ class ItemTest {
      * Test to verify that the initial quantity of the item is set to 1.
      */
     @Test
-    void incrementQuantityIncreasesCount() {
+    public void incrementQuantityIncreasesCount() {
         assertEquals(1, item.getQuantity());
         item.incrementQuantity();
         assertEquals(2, item.getQuantity(), 
@@ -44,7 +44,7 @@ class ItemTest {
      * Test to verify that the quantity can be incremented multiple times.
      */
     @Test
-    void gettersReturnConstructorValues() {
+    public void gettersReturnConstructorValues() {
         assertEquals(29.90, item.getPrice(), 1e-6);
         assertEquals(6.0, item.getVat(), 1e-6);
         assertEquals("abc123", item.getItemID());

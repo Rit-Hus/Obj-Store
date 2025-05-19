@@ -25,7 +25,7 @@ class SaleTest {
      * Initializes a Sale instance.
      */
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         sale = new Sale();
     }
 
@@ -35,7 +35,7 @@ class SaleTest {
      * It verifies that the total amount and VAT are calculated correctly.
      */
     @Test
-    void scanItemsAccumulatesTotalsCorrectly() {
+    public void scanItemsAccumulatesTotalsCorrectly() {
 
         Item item = new Item(15.0, 10.0, 1, "A1", "Gadget", "Test gadget");
         ArrayList<Item> firstScan  = new ArrayList<>(List.of(item));
@@ -58,7 +58,7 @@ class SaleTest {
      * It verifies that the total amount and VAT are calculated correctly.
      */
     @Test
-    void mixedScansAccumulateSeparateLines() {
+    public void mixedScansAccumulateSeparateLines() {
         ArrayList<Item> scanX = new ArrayList<>(List.of(
             new Item(10.0, 5.0, 1, "X", "One", "Desc")
         ));
