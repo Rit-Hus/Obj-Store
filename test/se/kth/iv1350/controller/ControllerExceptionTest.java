@@ -17,10 +17,10 @@ import main.se.kth.iv1350.integration.InventoryAccessException;
 public class ControllerExceptionTest {
     private Controller ctrl;
 
-
     /**
      * Sets up the test environment before each test case.
-     * Initializes a Controller instance with a Printer and an ExternalInventorySystem.
+     * Initializes a Controller instance with a Printer and an
+     * ExternalInventorySystem.
      */
     @Before
     public void setUp() {
@@ -30,10 +30,12 @@ public class ControllerExceptionTest {
         ctrl.startSale();
     }
 
-
     /**
      * Tests the addItemToSale method when an item with an unknown ID is added.
      * Expects an ItemNotFoundException to be thrown.
+     * 
+     * @throws ItemNotFoundException when the inventory system cannot find the item
+     * @throws Exception             if an unexpected error occurs during the test
      */
     @Test
     public void addItemToSale_unknownId_throwsItemNotFoundException() throws Exception {
@@ -46,10 +48,14 @@ public class ControllerExceptionTest {
         fail("Expected ItemNotFoundException");
     }
 
-
     /**
      * Tests the addItemToSale method when a database error occurs.
      * Expects an InventoryAccessException to be thrown.
+     * 
+     * @throws InventoryAccessException when the inventory system signals a DB
+     *                                  failure
+     * @throws Exception                if an unexpected error occurs during the
+     *                                  test
      */
     @Test
     public void addItemToSale_dbError_throwsInventoryAccessException() throws Exception {

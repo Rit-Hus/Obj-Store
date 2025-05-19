@@ -18,10 +18,10 @@ import main.se.kth.iv1350.integration.InventoryAccessException;
 public class SaleStateIntegrityTest {
     private Controller ctrl;
 
-
     /**
      * Sets up the test environment before each test case.
-     * Initializes a Controller instance with a Printer and an ExternalInventorySystem.
+     * Initializes a Controller instance with a Printer and an
+     * ExternalInventorySystem.
      */
     @Before
     public void setUp() {
@@ -31,10 +31,13 @@ public class SaleStateIntegrityTest {
         ctrl.startSale();
     }
 
-
     /**
      * Tests the sale state after an ItemNotFoundException is thrown.
      * Verifies that no items are added to the sale and the total price is 0.
+     * 
+     * @throws ItemNotFoundException when the inventory system cannot find the
+     *                               requested item
+     * @throws Exception             if an unexpected error occurs during the test
      */
     @Test
     public void saleState_afterItemNotFoundException_noItemsAdded() throws Exception {
@@ -49,9 +52,15 @@ public class SaleStateIntegrityTest {
         }
         fail("Expected ItemNotFoundException");
     }
-/**
+
+    /**
      * Tests the sale state after an InventoryAccessException is thrown.
      * Verifies that no items are added to the sale and the total price is 0.
+     * 
+     * @throws InventoryAccessException when the inventory system simulates a
+     *                                  database failure
+     * @throws Exception                if an unexpected error occurs during the
+     *                                  test
      */
     @Test
     public void saleState_afterDbErrorException_noItemsAdded() throws Exception {

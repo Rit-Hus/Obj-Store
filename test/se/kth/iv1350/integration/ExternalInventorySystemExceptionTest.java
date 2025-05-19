@@ -8,14 +8,13 @@ import main.se.kth.iv1350.integration.ExternalInventorySystem;
 import main.se.kth.iv1350.integration.ItemNotFoundException;
 import main.se.kth.iv1350.integration.InventoryAccessException;
 
-
 /**
- * This class contains tests for the ExternalInventorySystem class, specifically focusing on
+ * This class contains tests for the ExternalInventorySystem class, specifically
+ * focusing on
  * exception handling.
  */
 public class ExternalInventorySystemExceptionTest {
     private ExternalInventorySystem invSys;
-
 
     /**
      * Sets up the test environment before each test case.
@@ -29,6 +28,10 @@ public class ExternalInventorySystemExceptionTest {
     /**
      * Tests the fetchItemDTO method when an item with an unknown ID is requested.
      * Expects an ItemNotFoundException to be thrown.
+     * 
+     * @throws ItemNotFoundException when the inventory system cannot find the
+     *                               requested item
+     * @throws Exception             if an unexpected error occurs during the test
      */
     @Test
     public void fetchItemDTO_unknownId_throwsItemNotFoundException() throws Exception {
@@ -44,6 +47,11 @@ public class ExternalInventorySystemExceptionTest {
     /**
      * Tests the fetchItemDTO method when a database error occurs.
      * Expects an InventoryAccessException to be thrown.
+     * 
+     * @throws InventoryAccessException when the inventory system simulates a
+     *                                  database failure
+     * @throws Exception                if an unexpected error occurs during the
+     *                                  test
      */
     @Test
     public void fetchItemDTO_dbError_throwsInventoryAccessException() throws Exception {
