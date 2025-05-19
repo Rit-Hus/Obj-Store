@@ -7,10 +7,7 @@ import org.junit.Test;
 import main.se.kth.iv1350.integration.ExternalInventorySystem;
 
 public class ExternalInventorySystemSingletonTest {
-    /**
-     * Verifies that ExternalInventorySystem.getInstance() always returns
-     * the same object, confirming the Singleton pattern.
-     */
+
     @Test
     public void getInstance_returnsSameInstance() {
         ExternalInventorySystem first  = ExternalInventorySystem.getInstance();
