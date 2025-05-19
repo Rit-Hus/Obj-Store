@@ -1,4 +1,4 @@
-package test.se.kth.iv1350.controller;
+package test.se.kth.iv1350.model;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -27,7 +27,7 @@ public class SaleStateIntegrityTest {
         try {
             ctrl.addItemToSale("noSuchID", 1);
         } catch (ItemNotFoundException e) {
-            // after exception, finish sale
+
             ReceiptDTO dto = ctrl.endSale(0.0);
             assertTrue("No items should be on the sale", dto.getItems().isEmpty());
             assertEquals("Total price should be 0", 0.0, dto.getTotalPrice(), 1e-3);

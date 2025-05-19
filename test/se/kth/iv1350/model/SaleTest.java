@@ -22,7 +22,7 @@ class SaleTest {
 
     @Test
     void scanItemsAccumulatesTotalsCorrectly() {
-        // simulate scanning two of the same
+
         Item item = new Item(15.0, 10.0, 1, "A1", "Gadget", "Test gadget");
         ArrayList<Item> firstScan  = new ArrayList<>(List.of(item));
         ArrayList<Item> secondScan = new ArrayList<>(List.of(item));
@@ -33,9 +33,9 @@ class SaleTest {
         SaleDTO summary = sale.createSaleDTO(0.0);
         assertEquals(1, summary.getItems().size());
         assertEquals(2, summary.getItems().get(0).getQuantity());
-        // total-price = 2×15.0 = 30.0
+
         assertEquals(30.0, summary.getTotalAmount(), 1e-6);
-        // VAT = 30.0 × 0.10 = 3.0
+
         assertEquals(3.0, summary.getVAT(), 1e-6);
     }
 

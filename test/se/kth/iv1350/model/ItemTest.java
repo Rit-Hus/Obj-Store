@@ -10,15 +10,14 @@ class ItemTest {
 
     @BeforeEach
     void setUp() {
-        // Matches your actual Item constructor parameters:
-        // Item(double price, double vat, int quantity, String itemID, String name, String description)
+
         item = new Item(
-            29.90,    // price
-            6.0,      // VAT (6%)
-            1,        // quantity
-            "abc123", // itemID
-            "BigWheel Oatmeal", // name
-            "500g whole grain oats" // description
+            29.90,    
+            6.0,     
+            1,      
+            "abc123",
+            "BigWheel Oatmeal",
+            "500g whole grain oats" 
         );
     }
 
