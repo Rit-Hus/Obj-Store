@@ -17,6 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
  * based on the amount paid and the total amount of the sale.
  */
 class PaymentTest {
+
+
+    /**
+     * Tests the getChange method to ensure it returns the correct change when paid over the total amount.
+     * It verifies that the change is positive when paid more than the total.
+     */
     @Test
     void changeIsPositiveWhenPaidOverTotal() {
 
@@ -36,6 +42,10 @@ class PaymentTest {
         assertEquals(30.0, change, 1e-6, "80 paid on 50 total → 30 change");
     }
 
+    /**
+     * Tests the getChange method to ensure it returns zero when the payment is exactly equal to the total amount.
+     * It verifies that the change is zero when paid exactly.
+     */
     @Test
     void changeIsZeroWhenExactPayment() {
         SaleDTO sale = new SaleDTO(
@@ -51,6 +61,10 @@ class PaymentTest {
         assertEquals(0.0, change, 1e-6, "Exact payment yields zero change");
     }
 
+    /**
+     * Tests the getChange method to ensure it returns a negative value when the payment is less than the total amount.
+     * It verifies that the change is negative when underpaid.
+     */
     @Test
     void changeIsNegativeWhenUnderpaid() {
         SaleDTO sale = new SaleDTO(

@@ -20,11 +20,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class SaleTest {
     private Sale sale;
 
+    /**
+     * Sets up the test environment before each test case.
+     * Initializes a Sale instance.
+     */
     @BeforeEach
     void setUp() {
         sale = new Sale();
     }
 
+
+    /**
+     * Tests the scanItems method to ensure it correctly accumulates items.
+     * It verifies that the total amount and VAT are calculated correctly.
+     */
     @Test
     void scanItemsAccumulatesTotalsCorrectly() {
 
@@ -44,6 +53,10 @@ class SaleTest {
         assertEquals(3.0, summary.getVAT(), 1e-6);
     }
 
+    /**
+     * Tests the scanItems method to ensure it correctly accumulates items with different IDs.
+     * It verifies that the total amount and VAT are calculated correctly.
+     */
     @Test
     void mixedScansAccumulateSeparateLines() {
         ArrayList<Item> scanX = new ArrayList<>(List.of(
