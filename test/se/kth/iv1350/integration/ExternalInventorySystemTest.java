@@ -10,7 +10,10 @@ import main.se.kth.iv1350.integration.*;;
  */
 class ExternalInventorySystemTest {
     private final ExternalInventorySystem eis = ExternalInventorySystem.getInstance();
-
+    /**
+     * This test verifies that the fetchItemDTO method returns a non-null ItemDTO object
+     * when a known item identifier is provided.
+     */
     @Test
     void fetchKnownItemReturnsCorrectDTO() throws Exception{
 
