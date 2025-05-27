@@ -29,7 +29,7 @@ public class View {
     }
 
     
-        public void printItemDetails(ItemDTO item) {
+        private void printItemDetails(ItemDTO item) {
         System.out.println("Item ID: "         + item.getIdentifier());
         System.out.println("Item name: "       + item.getName());
         System.out.println("Item cost: "       + printer.formatPrice(item.getPrice()) + " SEK");
