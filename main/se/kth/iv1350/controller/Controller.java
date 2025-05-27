@@ -9,6 +9,7 @@ import main.se.kth.iv1350.integration.ItemNotFoundException;
 import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.integration.ReceiptDTO;
 import main.se.kth.iv1350.integration.SaleDTO;
+import main.se.kth.iv1350.model.DiscountStrategy;
 import main.se.kth.iv1350.model.Item;
 import main.se.kth.iv1350.model.Payment;
 import main.se.kth.iv1350.model.RevenueObserver;
@@ -24,6 +25,7 @@ public class Controller {
     private final Sale sale;
     private final Printer printer;
     private final ExternalInventorySystem invSys;
+    private DiscountStrategy discountStrategy;
 
     public Controller(Printer printer, ExternalInventorySystem invSys) {
         this.printer = printer;
@@ -49,6 +51,11 @@ public class Controller {
     }
 
 
+    public void setDiscountStrategy(DiscountStrategy strategy) {
+    sale.setDiscountStrategy(strategy);
+    }
+
+
     /**
      * Adds an item to the current sale. The item is fetched from the inventory system
      * using its ID and quantity.
@@ -70,6 +77,8 @@ public class Controller {
             dto.getName(),
             dto.getDescription()
         );
+
+        
         sale.scanItems(new ArrayList<>(List.of(item)));
         return dto;
     }

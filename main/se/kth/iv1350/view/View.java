@@ -7,7 +7,6 @@ import main.se.kth.iv1350.integration.ItemNotFoundException;
 import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.util.FileLogger;
 
-
 /**
  * The View class represents the user interface of the application. It interacts
  * with the controller to perform operations and displays the results to the user.
@@ -25,6 +24,14 @@ public class View {
      * printing their details.
      */
     public void run() {
+
+
+        System.out.println("Choose discount mode:");
+        System.out.println("  1) No discount");
+        System.out.println("  2) Bulk discount");
+
+
+
         controller.startSale();
 
 
