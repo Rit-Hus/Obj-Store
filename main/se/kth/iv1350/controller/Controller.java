@@ -35,7 +35,7 @@ public class Controller {
      * Starts a new sale by initializing the sale object and setting the date.
      */
     public void startSale() {
-        sale.scanItems(new ArrayList<>());
+        Sale sale = new Sale();
         System.out.println("Sale started at: " + sale.getSaleDate());
     }
 
