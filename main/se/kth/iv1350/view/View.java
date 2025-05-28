@@ -6,6 +6,10 @@ import main.se.kth.iv1350.integration.ItemDTO;
 import main.se.kth.iv1350.integration.ItemNotFoundException;
 import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.util.FileLogger;
+import main.se.kth.iv1350.model.NoDiscountStrategy;
+import main.se.kth.iv1350.model.BulkDiscountStrategy;
+import java.util.Scanner;
+
 
 /**
  * The View class represents the user interface of the application. It interacts
@@ -25,10 +29,22 @@ public class View {
      */
     public void run() {
 
-
+        Scanner sc = new Scanner(System.in);
         System.out.println("Choose discount mode:");
         System.out.println("  1) No discount");
         System.out.println("  2) Bulk discount");
+        System.out.print("> ");
+
+
+        int choice = sc.nextInt();     // Waits for integer input
+        sc.nextLine();                 // Consumes the newline after the number
+
+        // Wire up the chosen strategy
+        if (choice == 1) {
+            controller.setDiscountStrategy(new NoDiscountStrategy());
+        } else {
+            controller.setDiscountStrategy(new BulkDiscountStrategy(1, 0.05));
+        }
 
 
 

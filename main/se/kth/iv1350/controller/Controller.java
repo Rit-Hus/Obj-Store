@@ -15,6 +15,8 @@ import main.se.kth.iv1350.model.Payment;
 import main.se.kth.iv1350.model.RevenueObserver;
 import main.se.kth.iv1350.model.Sale;
 
+import java.util.Scanner;
+
 
 /**
  * The Controller class is responsible for managing the flow of the application. It
