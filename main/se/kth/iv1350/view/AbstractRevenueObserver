@@ -1,4 +1,4 @@
-ppackage main.se.kth.iv1350.view;
+package main.se.kth.iv1350.view;
 
 import main.se.kth.iv1350.model.RevenueObserver;
 
