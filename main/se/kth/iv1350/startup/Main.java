@@ -1,4 +1,3 @@
-// File: src/main/se/kth/iv1350/startup/Main.java
 package main.se.kth.iv1350.startup;
 
 import main.se.kth.iv1350.controller.Controller;

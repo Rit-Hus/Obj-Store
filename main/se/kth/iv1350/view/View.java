@@ -1,4 +1,3 @@
-// File: src/main/se/kth/iv1350/view/View.java
 package main.se.kth.iv1350.view;
 
 import main.se.kth.iv1350.controller.Controller;
@@ -26,28 +25,26 @@ public class View {
     }
 
     /**
-     * Starts the application and simulates a sale by adding items to the sale and
-     * printing their details.
+     * Starts the application and simulates multiple sales by adding items to each sale,
+     * prompting for a discount strategy before each, and printing their details.
      */
     public void run() {
-
         Scanner sc = new Scanner(System.in);
-        System.out.println("Choose discount mode:");
+
+        // ------ Sale #1 ------
+        System.out.println("Choose discount mode for Sale #1:");
         System.out.println("  1) No discount");
         System.out.println("  2) Bulk discount");
         System.out.print("> ");
-
-        int choice = sc.nextInt();
+        int choice1 = sc.nextInt();
         sc.nextLine();
-
-        if (choice == 1) {
+        if (choice1 == 1) {
             controller.setDiscountStrategy(new NoDiscountStrategy());
         } else {
             controller.setDiscountStrategy(new BulkDiscountStrategy(1, 0.5));
         }
 
         controller.startSale();
-
         try {
             ItemDTO dto1 = controller.addItemToSale("abc123", 1);
             printItemDetails(dto1);
@@ -83,8 +80,20 @@ public class View {
 
         controller.endSale(100.00);
 
-        controller.startSale();
+        // ------ Sale #2 ------
+        System.out.println("\nChoose discount mode for Sale #2:");
+        System.out.println("  1) No discount");
+        System.out.println("  2) Bulk discount");
+        System.out.print("> ");
+        int choice2 = sc.nextInt();
+        sc.nextLine();
+        if (choice2 == 1) {
+            controller.setDiscountStrategy(new NoDiscountStrategy());
+        } else {
+            controller.setDiscountStrategy(new BulkDiscountStrategy(1, 0.5));
+        }
 
+        controller.startSale();
         try {
             controller.addItemToSale("noSuchID", 1);
         } catch (ItemNotFoundException e) {
@@ -97,8 +106,20 @@ public class View {
 
         controller.endSale(1000);
 
-        controller.startSale();
+        // ------ Sale #3 ------
+        System.out.println("\nChoose discount mode for Sale #3:");
+        System.out.println("  1) No discount");
+        System.out.println("  2) Bulk discount");
+        System.out.print("> ");
+        int choice3 = sc.nextInt();
+        sc.nextLine();
+        if (choice3 == 1) {
+            controller.setDiscountStrategy(new NoDiscountStrategy());
+        } else {
+            controller.setDiscountStrategy(new BulkDiscountStrategy(1, 0.5));
+        }
 
+        controller.startSale();
         try {
             controller.addItemToSale("dbError", 1);
         } catch (ItemNotFoundException e) {
@@ -110,11 +131,23 @@ public class View {
         }
         controller.endSale(1000);
 
+        // ------ Sale #4 ------
+        System.out.println("\nChoose discount mode for Sale #4:");
+        System.out.println("  1) No discount");
+        System.out.println("  2) Bulk discount");
+        System.out.print("> ");
+        int choice4 = sc.nextInt();
+        sc.nextLine();
+        if (choice4 == 1) {
+            controller.setDiscountStrategy(new NoDiscountStrategy());
+        } else {
+            controller.setDiscountStrategy(new BulkDiscountStrategy(1, 0.5));
+        }
+
         controller.startSale();
-
         try {
-            ItemDTO dto1 = controller.addItemToSale("abc123", 1);
-            printItemDetails(dto1);
+            ItemDTO dto4 = controller.addItemToSale("abc123", 1);
+            printItemDetails(dto4);
         } catch (ItemNotFoundException e) {
             System.out.println("Sorry, that item ID does not exist.\n");
             FileLogger.log(e);
@@ -124,8 +157,8 @@ public class View {
         }
 
         try {
-            ItemDTO dto2 = controller.addItemToSale("def456", 3);
-            printItemDetails(dto2);
+            ItemDTO dto5 = controller.addItemToSale("def456", 3);
+            printItemDetails(dto5);
         } catch (ItemNotFoundException e) {
             System.out.println("Sorry, that item ID does not exist.\n");
             FileLogger.log(e);
@@ -135,8 +168,8 @@ public class View {
         }
 
         try {
-            ItemDTO dto3 = controller.addItemToSale("def456", 1);
-            printItemDetails(dto3);
+            ItemDTO dto6 = controller.addItemToSale("def456", 1);
+            printItemDetails(dto6);
         } catch (ItemNotFoundException e) {
             System.out.println("Sorry, that item ID does not exist.\n");
             FileLogger.log(e);

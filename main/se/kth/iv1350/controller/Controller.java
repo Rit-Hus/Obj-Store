@@ -1,4 +1,3 @@
-// File: src/main/se/kth/iv1350/controller/Controller.java
 package main.se.kth.iv1350.controller;
 
 import java.util.ArrayList;
