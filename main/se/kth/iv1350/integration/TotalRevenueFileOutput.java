@@ -9,7 +9,7 @@ import main.se.kth.iv1350.view.AbstractRevenueObserver;
  * Writes total revenue to a file.
  */
 public class TotalRevenueFileOutput extends AbstractRevenueObserver {
-    private static final String FILE_NAME = "total-revenue.txt";
+    private static final String REVENUE_LOG_FILE = "revenue-log.log";
 
     @Override
     protected void doShowTotalIncome() throws IOException {
