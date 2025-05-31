@@ -11,6 +11,7 @@ import main.se.kth.iv1350.integration.ReceiptDTO;
 import main.se.kth.iv1350.integration.SaleDTO;
 import main.se.kth.iv1350.model.DiscountStrategy;
 import main.se.kth.iv1350.model.Item;
+import main.se.kth.iv1350.model.NoDiscountStrategy;
 import main.se.kth.iv1350.model.Payment;
 import main.se.kth.iv1350.model.RevenueObserver;
 import main.se.kth.iv1350.model.Sale;
@@ -22,51 +23,45 @@ import main.se.kth.iv1350.model.Sale;
  * The class provides methods to start a sale, add items to the sale, and end the sale.
  */
 public class Controller {
-    private  Sale currentSale;
+    private Sale currentSale;
     private final Printer printer;
     private final ExternalInventorySystem invSys;
-    private DiscountStrategy discountStrategy;
+    private DiscountStrategy discountStrategy = new NoDiscountStrategy(); // default
     private final List<RevenueObserver> revenueObservers = new ArrayList<>();
-
 
     public Controller(Printer printer, ExternalInventorySystem invSys) {
         this.printer = printer;
         this.invSys  = invSys;
-        this.currentSale    = new Sale();
+        this.currentSale = new Sale();
+        this.currentSale.setDiscountStrategy(discountStrategy);
+    }
+
+    public void setDiscountStrategy(DiscountStrategy strategy) {
+        this.discountStrategy = strategy;
+        if (currentSale != null) {
+            currentSale.setDiscountStrategy(strategy);
+        }
+    }
+
+    public void startSale() {
+        this.currentSale = new Sale();
+        
+        currentSale.setDiscountStrategy(discountStrategy);
+
+        for (RevenueObserver obs : revenueObservers) {
+            currentSale.addObserver(obs);
+        }
+        System.out.println("Sale started at: " + currentSale.getSaleDate());
     }
 
 
-public void addRevenueObserver(RevenueObserver obs) {
+
+    public void addRevenueObserver(RevenueObserver obs) {
     revenueObservers.add(obs);
     if (currentSale != null) {
         currentSale.addObserver(obs);
     }
 }
-
-    /**
-     * Starts a new sale by initializing the sale object and setting the date.
-     */
-    public void startSale() {
-    this.currentSale = new Sale();
-    for (RevenueObserver obs : revenueObservers) {
-        currentSale.addObserver(obs);
-    }
-    System.out.println("Sale started at: " + currentSale.getSaleDate());
-}
-
-    /**
-     * Sets the discount strategy for the current sale.
-     *
-     * @param ds The discount strategy to be set.
-     */
-    /*public void addRevenueObserver(RevenueObserver obs) {
-        currentSale.addObserver(obs);
-    }*/
-
-
-    public void setDiscountStrategy(DiscountStrategy strategy) {
-    currentSale.setDiscountStrategy(strategy);
-    }
 
 
     /**
