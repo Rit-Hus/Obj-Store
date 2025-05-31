@@ -23,6 +23,20 @@ public class FileLogger extends AbstractRevenueObserver {
         System.err.println(">>> Failed to log revenue: " + e.getMessage());
     }
 
+
+        /**
+     * Logs a message to the revenue log file with a timestamp.
+     *
+     * @param message The message to be logged.
+     */
+    public static void log(String message) {
+        try (PrintWriter out = new PrintWriter(new FileWriter(REVENUE_LOG_FILE, true))) {
+            out.printf("%s: %s%n", LocalDateTime.now(), message);
+        } catch (IOException ignored) { }
+    }
+
+    
+
     // Add this for logging exceptions
     public static void log(Exception e) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(LOG_FILE, true))) {
