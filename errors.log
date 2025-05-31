@@ -2,3 +2,11 @@ ERROR: main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: noS
 ERROR: main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
 ERROR: main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: noSuchID
 ERROR: main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
+ERROR: main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: noSuchID
+ERROR: main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
+ERROR: main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: noSuchID
+ERROR: main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
+ERROR: main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: noSuchID
+ERROR: main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
+ERROR: main.se.kth.iv1350.integration.ItemNotFoundException: Item not found: noSuchID
+ERROR: main.se.kth.iv1350.integration.InventoryAccessException: Simulated database failure for: dbError
