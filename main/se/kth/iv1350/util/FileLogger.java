@@ -5,11 +5,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import main.se.kth.iv1350.view.AbstractRevenueObserver;
 
+
 /**
  * Logs revenue and errors to a file.
  */
 public class FileLogger extends AbstractRevenueObserver {
     private static final String LOG_FILE = "revenue-log.txt";
+    private static final String REVENUE_LOG_FILE = "revenue.log";
+    private static final String ERROR_LOG_FILE   = "errors.log";
+
 
     @Override
     protected void doShowTotalIncome() throws IOException {
