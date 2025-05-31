@@ -36,14 +36,14 @@ public class View {
         System.out.print("> ");
 
 
-        int choice = sc.nextInt();     // Waits for integer input
-        sc.nextLine();                 // Consumes the newline after the number
+        int choice = sc.nextInt();    
+        sc.nextLine();              
 
-        // Wire up the chosen strategy
+
         if (choice == 1) {
             controller.setDiscountStrategy(new NoDiscountStrategy());
         } else {
-            controller.setDiscountStrategy(new BulkDiscountStrategy(1, 0.05));
+            controller.setDiscountStrategy(new BulkDiscountStrategy(1, 0.5));
         }
 
 
