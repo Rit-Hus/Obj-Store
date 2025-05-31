@@ -26,7 +26,6 @@ public class Controller {
     public Controller(Printer printer, ExternalInventorySystem inventorySystem) {
         this.printer = printer;
         this.inventorySystem = inventorySystem;
-        this.sale = new Sale();
     }
 
     /** Starts a new sale. */
