@@ -1,3 +1,4 @@
+// File: src/main/se/kth/iv1350/controller/Controller.java
 package main.se.kth.iv1350.controller;
 
 import java.util.ArrayList;
@@ -15,16 +16,14 @@ import main.se.kth.iv1350.model.Payment;
 import main.se.kth.iv1350.model.RevenueObserver;
 import main.se.kth.iv1350.model.Sale;
 
-import java.util.Scanner;
-
-
 /**
  * The Controller class is responsible for managing the flow of the application. It
  * interacts with the model and the view to handle user input and update the display.
  * The class provides methods to start a sale, add items to the sale, and end the sale.
  */
 public class Controller {
-    private final Sale sale;
+    private final List<RevenueObserver> revenueObservers = new ArrayList<>();
+    private Sale sale;
     private final Printer printer;
     private final ExternalInventorySystem invSys;
     private DiscountStrategy discountStrategy;
@@ -32,31 +31,47 @@ public class Controller {
     public Controller(Printer printer, ExternalInventorySystem invSys) {
         this.printer = printer;
         this.invSys  = invSys;
-        this.sale    = new Sale();
     }
 
     /**
      * Starts a new sale by initializing the sale object and setting the date.
      */
     public void startSale() {
-        Sale sale = new Sale();
+        this.sale = new Sale();
         System.out.println("Sale started at: " + sale.getSaleDate());
+        for (RevenueObserver obs : revenueObservers) {
+            sale.addObserver(obs);
+        }
+        if (discountStrategy != null) {
+            sale.setDiscountStrategy(discountStrategy);
+        }
     }
 
     /**
-     * Sets the discount strategy for the current sale.
+     * Registers a new RevenueObserver. If a sale is already in progress, attaches it immediately.
      *
-     * @param ds The discount strategy to be set.
+     * @param obs The RevenueObserver to register.
      */
     public void addRevenueObserver(RevenueObserver obs) {
-        sale.addObserver(obs);
+        if (!revenueObservers.contains(obs)) {
+            revenueObservers.add(obs);
+            if (sale != null) {
+                sale.addObserver(obs);
+            }
+        }
     }
 
-
+    /**
+     * Sets the discount strategy for the current and future sales.
+     *
+     * @param strategy The discount strategy to be set.
+     */
     public void setDiscountStrategy(DiscountStrategy strategy) {
-    sale.setDiscountStrategy(strategy);
+        this.discountStrategy = strategy;
+        if (sale != null) {
+            sale.setDiscountStrategy(strategy);
+        }
     }
-
 
     /**
      * Adds an item to the current sale. The item is fetched from the inventory system
@@ -65,8 +80,8 @@ public class Controller {
      * @param itemID The ID of the item to be added.
      * @param qty    The quantity of the item to be added.
      * @return The ItemDTO object containing information about the added item.
-     * @throws ItemNotFoundException If the item with the specified ID is not found.
-     * @throws InventoryAccessException If there is an error accessing the inventory system.
+     * @throws ItemNotFoundException     If the item with the specified ID is not found.
+     * @throws InventoryAccessException  If there is an error accessing the inventory system.
      */
     public ItemDTO addItemToSale(String itemID, int qty)
            throws ItemNotFoundException, InventoryAccessException {
@@ -79,8 +94,6 @@ public class Controller {
             dto.getName(),
             dto.getDescription()
         );
-
-        
         sale.scanItems(new ArrayList<>(List.of(item)));
         return dto;
     }
@@ -92,7 +105,6 @@ public class Controller {
      * @param amountPaid The amount paid by the customer.
      * @return The ReceiptDTO object containing information about the sale and change.
      */
-
     public ReceiptDTO endSale(double amountPaid) {
         SaleDTO saleDTO = sale.createSaleDTO(amountPaid);
         Payment payment = new Payment();
