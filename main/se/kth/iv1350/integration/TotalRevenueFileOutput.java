@@ -1,28 +1,25 @@
 package main.se.kth.iv1350.integration;
 
-import main.se.kth.iv1350.model.RevenueObserver;
-import main.se.kth.iv1350.util.FileLogger;
-
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import main.se.kth.iv1350.view.AbstractRevenueObserver;
 
 /**
- * The TotalRevenueFileOutput class implements the RevenueObserver interface and
- * is responsible for logging the cumulative revenue to a file. It updates the
- * total revenue whenever a new sale occurs and formats the output to two decimal
- * places, replacing the decimal point with a comma.
+ * Writes total revenue to a file.
  */
-public class TotalRevenueFileOutput implements RevenueObserver {
-    private double totalRevenue = 0.0;
+public class TotalRevenueFileOutput extends AbstractRevenueObserver {
+    private static final String FILE_NAME = "total-revenue.txt";
 
+    @Override
+    protected void doShowTotalIncome() throws IOException {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME, false))) {
+            writer.println("Total revenue (file output): " + getTotalIncome() + " SEK");
+        }
+    }
 
-    /**
-     * This method is called whenever a new sale occurs. It updates the total
-     * revenue and logs the cumulative revenue to a file.
-     *
-     * @param saleAmount The amount of the new sale.
-     */
-    public void onNewSale(double saleAmount) {
-        totalRevenue += saleAmount;
-        String formatted = String.format("%.2f", totalRevenue).replace('.', ',');
-        FileLogger.log("Cumulative revenue: " + formatted + " SEK");
+    @Override
+    protected void handleErrors(Exception e) {
+        System.err.println(">>> Failed to write revenue to file: " + e.getMessage());
     }
 }

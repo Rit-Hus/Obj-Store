@@ -15,8 +15,6 @@ import main.se.kth.iv1350.model.Payment;
 import main.se.kth.iv1350.model.RevenueObserver;
 import main.se.kth.iv1350.model.Sale;
 
-import java.util.Scanner;
-
 
 /**
  * The Controller class is responsible for managing the flow of the application. It
@@ -24,7 +22,7 @@ import java.util.Scanner;
  * The class provides methods to start a sale, add items to the sale, and end the sale.
  */
 public class Controller {
-    private final Sale sale;
+    private  Sale currentSale;
     private final Printer printer;
     private final ExternalInventorySystem invSys;
     private DiscountStrategy discountStrategy;
@@ -32,7 +30,7 @@ public class Controller {
     public Controller(Printer printer, ExternalInventorySystem invSys) {
         this.printer = printer;
         this.invSys  = invSys;
-        this.sale    = new Sale();
+        this.currentSale    = new Sale();
     }
 
     /**
@@ -49,12 +47,12 @@ public class Controller {
      * @param ds The discount strategy to be set.
      */
     public void addRevenueObserver(RevenueObserver obs) {
-        sale.addObserver(obs);
+        currentSale.addObserver(obs);
     }
 
 
     public void setDiscountStrategy(DiscountStrategy strategy) {
-    sale.setDiscountStrategy(strategy);
+    currentSale.setDiscountStrategy(strategy);
     }
 
 
@@ -69,21 +67,21 @@ public class Controller {
      * @throws InventoryAccessException If there is an error accessing the inventory system.
      */
     public ItemDTO addItemToSale(String itemID, int qty)
-           throws ItemNotFoundException, InventoryAccessException {
-        ItemDTO dto = invSys.fetchItemDTO(itemID, qty);
-        Item item = new Item(
-            dto.getPrice(),
-            dto.getVat(),
-            dto.getQuantity(),
-            dto.getIdentifier(),
-            dto.getName(),
-            dto.getDescription()
-        );
+        throws ItemNotFoundException, InventoryAccessException {
+    ItemDTO dto = invSys.fetchItemDTO(itemID, qty);
+    Item item = new Item(
+        dto.getPrice(),
+        dto.getVat(),
+        dto.getQuantity(),
+        dto.getIdentifier(),
+        dto.getName(),
+        dto.getDescription()
+    );
+    
+    currentSale.scanItems(new ArrayList<>(List.of(item)));
+    return dto;
+}
 
-        
-        sale.scanItems(new ArrayList<>(List.of(item)));
-        return dto;
-    }
 
     /**
      * Ends the current sale and generates a receipt. The receipt is printed using the
@@ -94,11 +92,15 @@ public class Controller {
      */
 
     public ReceiptDTO endSale(double amountPaid) {
-        SaleDTO saleDTO = sale.createSaleDTO(amountPaid);
-        Payment payment = new Payment();
-        double change = payment.getChange(amountPaid, saleDTO);
-        ReceiptDTO receiptDTO = new ReceiptDTO(saleDTO, change);
-        printer.print(receiptDTO);
-        return receiptDTO;
-    }
+    SaleDTO saleDTO = currentSale.createSaleDTO(amountPaid);
+    Payment payment = new Payment();
+    double change = payment.getChange(amountPaid, saleDTO);
+    ReceiptDTO receiptDTO = new ReceiptDTO(saleDTO, change);
+    printer.print(receiptDTO);
+
+  
+
+    return receiptDTO;
+}
+
 }
