@@ -43,7 +43,7 @@ public class View {
         if (choice == 1) {
             controller.setDiscountStrategy(new NoDiscountStrategy());
         } else {
-            controller.setDiscountStrategy(new BulkDiscountStrategy(1, 0.5));
+            controller.setDiscountStrategy(new BulkDiscountStrategy(2, 0.5));
         }
 
         controller.startSale();
