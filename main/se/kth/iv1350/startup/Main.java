@@ -4,6 +4,7 @@ import main.se.kth.iv1350.controller.Controller;
 import main.se.kth.iv1350.integration.ExternalInventorySystem;
 import main.se.kth.iv1350.integration.Printer;
 import main.se.kth.iv1350.integration.TotalRevenueFileOutput;
+import main.se.kth.iv1350.model.RevenueObserver;
 import main.se.kth.iv1350.view.TotalRevenueView;
 import main.se.kth.iv1350.view.View;
 
@@ -15,7 +16,7 @@ public class Main {
         ExternalInventorySystem inventorySystem = ExternalInventorySystem.getInstance();
         Controller controller = new Controller(printer, inventorySystem);
 
-        controller.addRevenueObserver(new TotalRevenueView());
+        controller.addRevenueObserver((RevenueObserver) new TotalRevenueView());
         controller.addRevenueObserver(new TotalRevenueFileOutput());
 
         View view = new View(controller, printer);
