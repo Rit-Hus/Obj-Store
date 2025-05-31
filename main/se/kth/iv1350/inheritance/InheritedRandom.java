@@ -2,6 +2,8 @@ package main.se.kth.iv1350.inheritance;
 
 import java.util.Random;
 
+import main.se.kth.iv1350.inheritancecomposition.ComposedRandom;
+
 /**
  * Adapts java.util.Random using inheritance.
  * Overrides nextInt to always return only even numbers.
