@@ -13,7 +13,7 @@ public class TotalRevenueFileOutput extends AbstractRevenueObserver {
 
     @Override
     protected void doShowTotalIncome() throws IOException {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME, false))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(REVENUE_LOG_FILE, false))) {
             writer.println("Total revenue (file output): " + getTotalIncome() + " SEK");
         }
     }
