@@ -2,8 +2,8 @@ package main.se.kth.iv1350.inheritance;
 
 
 
-import main.se.kth.iv1350.inheritancecomposition.InheritedRandom;
-import main.se.kth.iv1350.inheritancecomposition.ComposedRandom;
+import main.se.kth.iv1350.inheritance.InheritedRandom;
+import main.se.kth.iv1350.inheritance.ComposedRandom;
 
 /**
  * 

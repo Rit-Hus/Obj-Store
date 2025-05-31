@@ -1,7 +1,7 @@
 package main.se.kth.iv1350.inheritance;
 
 import java.util.Random;
-import main.se.kth.iv1350.inheritancecomposition.InheritedRandom;
+import main.se.kth.iv1350.inheritance.InheritedRandom;
 
 
 /**
