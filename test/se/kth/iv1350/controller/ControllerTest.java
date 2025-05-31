@@ -1,52 +1,57 @@
 package test.se.kth.iv1350.controller;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
-import java.util.ArrayList;
-import main.se.kth.iv1350.integration.*;
-import main.se.kth.iv1350.model.*;
-import main.se.kth.iv1350.controller.*;
+import main.se.kth.iv1350.integration.ExternalInventorySystem;
+import main.se.kth.iv1350.controller.Controller;
+import main.se.kth.iv1350.integration.ItemDTO;
+import main.se.kth.iv1350.integration.ReceiptDTO;
+import main.se.kth.iv1350.integration.Printer;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
- * This class contains unit tests for the Controller class. It tests the endSale
- * method to ensure it returns a valid receipt with the correct total price and
- * change.
+ * This class contains tests for the Controller class, specifically focusing on
+ * the main functionality of adding items to a sale and ending a sale.
  */
-public class ControllerTest {
-    private static final String ITEM_ID = "abc123";
-    private static final double PRICE = 29.90;
-    private static final double VAT = 6.0;
-    
-    @Test
+class ControllerTest {
+    private Controller ctrl;
+
+
     /**
-     * Tests the endSale method of the Controller class. It verifies that the
-     * returned receipt contains the correct total price and change.
+     * Sets up the test environment before each test case.
+     * Initializes a Controller instance with a Printer and an ExternalInventorySystem.
      */
-    public void testEndSaleReturnsValidReceipt() {
-        
-        
-        Printer printer = new Printer();
-        Controller controller = new Controller(printer);
-        controller.startSale();
-        
-        
-        
-        ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(PRICE, VAT, 1, ITEM_ID, "Oatmeal", "500g"));
-        
-        
-        controller.scanItems(items); 
-        
-       
-        ReceiptDTO receipt = controller.endSale(50.0);
-        
-        
-        assertNotNull("Receipt should not be null", receipt);
-        assertEquals("Should have 1 item", 1, receipt.getItems().size());
-        assertEquals("Total should match item price", PRICE, receipt.getTotalPrice(), 0.001);
-        assertEquals("Change should be correct", 50.0 - PRICE, receipt.getChange(), 0.001);
-        
-        
+    @BeforeEach
+    void setUp() {
+        ctrl = new Controller(new Printer(), new ExternalInventorySystem());
+        ctrl.startSale();
+    }
+
+    /**
+     * Tests the addItemToSale method when an item with a known ID is added.
+     * Verifies that the returned ItemDTO contains the correct identifier, quantity, and price.
+     */
+    @Test
+    void addItemToSaleReturnsCorrectDTO() throws Exception {
+        ItemDTO dto = ctrl.addItemToSale("abc123", 3);
+        assertEquals("abc123", dto.getIdentifier());
+        assertEquals(3,       dto.getQuantity());
+        assertEquals(29.90,   dto.getPrice(), 1e-6);
+    }
+/**
+     * Tests the addItemToSale method when an item with an unknown ID is added.
+     * Expects an ItemNotFoundException to be thrown.
+     */
+    @Test
+    void endSaleComputesReceiptCorrectly() throws Exception {
+        ctrl.addItemToSale("abc123", 2);
+        ctrl.addItemToSale("def456", 1); 
+        ReceiptDTO receipt = ctrl.endSale(100.0);
+
+        double expectedTotal = 59.80 + 14.90;
+        assertEquals(expectedTotal,    receipt.getTotalPrice(), 1e-6);
+        assertEquals(expectedTotal*0.06, receipt.getTotalVat(),   1e-6);
+        assertEquals(100.0 - expectedTotal, receipt.getChange(), 1e-6);
     }
 }

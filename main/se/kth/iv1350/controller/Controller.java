@@ -67,10 +67,11 @@ public class Controller {
      *
      * @param amountPaid The amount the customer paid.
      */
-    public void endSale(double amountPaid) {
+    public ReceiptDTO endSale(double amountPaid) {
         SaleDTO saleDTO = sale.createSaleDTO(amountPaid);
         double change = new Payment().getChange(amountPaid, saleDTO);
         ReceiptDTO receiptDTO = new ReceiptDTO(saleDTO, change);
         printer.print(receiptDTO);
+        return receiptDTO;
     }
 }
