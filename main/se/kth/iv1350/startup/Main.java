@@ -26,9 +26,9 @@ public class Main {
         TotalRevenueFileOutput fileObserver = new TotalRevenueFileOutput();
         FileLogger logger = new FileLogger();
 
-controller.addRevenueObserver((RevenueObserver) consoleObserver);
-controller.addRevenueObserver(fileObserver);
-controller.addRevenueObserver(logger);
+        controller.addRevenueObserver((RevenueObserver) consoleObserver);
+        controller.addRevenueObserver(fileObserver);
+        controller.addRevenueObserver(logger);
 
 
 
