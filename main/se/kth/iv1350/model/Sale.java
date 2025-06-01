@@ -39,6 +39,12 @@ public class Sale {
         updateTotal();
     }
 
+    /**
+     * Returns the date of the sale.
+     *
+     * @return The date of the sale.
+     */
+
     private void updateTotal() {
         totalAmount = 0;
         totalVAT = 0;

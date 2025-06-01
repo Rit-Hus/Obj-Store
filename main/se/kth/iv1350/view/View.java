@@ -10,7 +10,14 @@ import main.se.kth.iv1350.integration.Printer;
 public class View {
     private Controller controller;
     private Printer printer;
+    
 
+    /**
+     * Creates a new instance of View.
+     *
+     * @param controller The controller to use for handling the sale.
+     * @param printer The printer to format prices.
+     */
     public View(Controller controller, Printer printer) {
         this.controller = controller;
         this.printer = printer;
@@ -28,7 +35,7 @@ public class View {
         controller.endSale(100.00);
     }
 
-    
+     
         private void printItemDetails(ItemDTO item) {
         System.out.println("Item ID: "         + item.getIdentifier());
         System.out.println("Item name: "       + item.getName());

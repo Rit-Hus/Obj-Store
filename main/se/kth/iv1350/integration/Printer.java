@@ -7,7 +7,9 @@ import java.time.format.DateTimeFormatter;
  */
 public class Printer {
     public Printer() { }
-
+/**
+ * Prints the details of an ItemDTO to System.out.
+ */
     public void printItemDetails(ItemDTO item) {
         System.out.println("Item ID: "         + item.getIdentifier());
         System.out.println("Item name: "       + item.getName());
@@ -16,6 +18,10 @@ public class Printer {
         System.out.println("Item description: " + item.getDescription());
         System.out.println();
     }
+
+    /**
+     * Prints the details of a ReceiptDTO to System.out.
+     */
 
     public void print(ReceiptDTO receipt) {
         StringBuilder sb = new StringBuilder();
@@ -44,6 +50,14 @@ public class Printer {
         System.out.println(sb.toString());
     }
 
+
+
+    /**
+     * Formats a price to two decimal places, replacing the decimal point with a comma.
+     *
+     * @param price The price to format.
+     * @return The formatted price as a string.
+     */
     public String formatPrice(double price) {
         return String.format("%.2f", price).replace('.', ',');
     }

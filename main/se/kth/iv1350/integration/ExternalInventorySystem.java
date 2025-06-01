@@ -24,8 +24,11 @@ public class ExternalInventorySystem {
     }
 
     /**
-     * Fetches a new ItemDTO for the given ID and quantity,
-     * or returns null if not found.
+     * Fetches an item template with the specified quantity.
+     *
+     * @param itemID The identifier of the item to fetch.
+     * @param quantity The quantity of the item to include in the returned template.
+     * @return A new ItemDTO object with the specified quantity, or null if the item is not found.
      */
     public ItemDTO fetchItemDTO(String itemID, int quantity) {
         for (ItemDTO itemDTO : items) {

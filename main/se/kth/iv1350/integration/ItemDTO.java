@@ -83,9 +83,9 @@ public int getQuantity (){
 }
 
 /**
- * Gets the identifier of the item.
+ * Gets the unique identifier of the item.
  *
- * @return The identifier of the item.
+ * @return The unique identifier of the item.
  */
 public String getIdentifier (){
 
