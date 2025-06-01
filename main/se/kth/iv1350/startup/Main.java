@@ -8,7 +8,11 @@ import main.se.kth.iv1350.util.FileLogger;
 import main.se.kth.iv1350.view.TotalRevenueView;
 import main.se.kth.iv1350.view.View;
 
-
+/**
+ * The main class to start the application.
+ * Initializes the controller, printer, and external inventory system,
+ * and sets up the view with observers for total revenue.
+ */
 public class Main {
     public static void main(String[] args) {
         Printer printer = new Printer();
