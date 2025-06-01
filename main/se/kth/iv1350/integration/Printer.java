@@ -6,7 +6,17 @@ import java.time.format.DateTimeFormatter;
  * Prints ItemDTO details and ReceiptDTO to System.out.
  */
 public class Printer {
+
+    /**
+     * Default constructor for Printer.
+     */
     public Printer() { }
+    
+    /**
+     * Prints the details of an ItemDTO to System.out.
+     *
+     * @param item The ItemDTO to print.
+     */
 
     public void printItemDetails(ItemDTO item) {
         System.out.println("Item ID: "         + item.getIdentifier());

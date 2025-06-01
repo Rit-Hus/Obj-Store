@@ -27,6 +27,14 @@ public class Controller {
     private final ExternalInventorySystem invSys;
     private DiscountStrategy discountStrategy;
 
+    /**
+     * Constructs a Controller with the specified Printer and ExternalInventorySystem.
+     *
+     * @param printer The Printer used to print receipts.
+     * @param invSys  The ExternalInventorySystem used to fetch item information.
+     */
+
+
     public Controller(Printer printer, ExternalInventorySystem invSys) {
         this.printer = printer;
         this.invSys  = invSys;

@@ -4,15 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Represents an external inventory system that provides item details.
+ * This class simulates the interaction with an external inventory system
+ */
 public class ExternalInventorySystem {
     private static final ExternalInventorySystem INSTANCE = new ExternalInventorySystem();
-
+    
+    /**
+     * Returns the singleton instance of the ExternalInventorySystem.
+     *
+     * @return The singleton instance of ExternalInventorySystem.
+     */
     public static ExternalInventorySystem getInstance() {
         return INSTANCE;
     }
 
     private final List<ItemDTO> catalog = new ArrayList<>();
-
+    /**
+     * Private constructor to prevent instantiation from outside the class.
+     * Initializes the catalog with some sample items.
+     */
     private ExternalInventorySystem() {
         catalog.add(new ItemDTO(
             29.90, 6, 0,
@@ -25,7 +37,15 @@ public class ExternalInventorySystem {
             "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour"
         ));
     }
-
+/**
+ * Fetches an ItemDTO from the external inventory system based on the item ID and quantity.
+ *
+ * @param itemID The identifier of the item to fetch.
+ * @param quantity The quantity of the item to fetch.
+ * @return An ItemDTO containing the item's details.
+ * @throws ItemNotFoundException If the item with the specified ID is not found in the catalog.
+ * @throws InventoryAccessException If there is an error accessing the inventory system.
+ */
     public ItemDTO fetchItemDTO(String itemID, int quantity)
             throws ItemNotFoundException, InventoryAccessException {
         if ("dbError".equals(itemID)) {
