@@ -7,7 +7,10 @@ import main.se.kth.iv1350.model.RevenueObserver;
  */
 public abstract class AbstractRevenueObserver implements RevenueObserver {
     private int totalIncome = 0;
-
+    
+    /**
+     * Default constructor.
+     */
     @Override
     public void onNewSale(double saleAmount) {
         calculateTotalIncome(saleAmount);

@@ -9,6 +9,9 @@ import main.se.kth.iv1350.inheritance.ComposedRandom;
  * Overrides nextInt to always return only even numbers.
  */
 public class InheritedRandom extends Random {
+    /**
+     * Creates a new instance of InheritedRandom.
+     */
     @Override
     public int nextInt(int bound) {
         int result = super.nextInt(bound);

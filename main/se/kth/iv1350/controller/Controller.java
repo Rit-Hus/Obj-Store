@@ -28,14 +28,24 @@ public class Controller {
     private DiscountStrategy discountStrategy;
     private final List<RevenueObserver> revenueObservers = new ArrayList<>();
 
-
+/**
+ * Constructor for the Controller class.
+ * Initializes the printer and inventory system.    
+ * @param printer The printer used to print receipts.
+ * @param invSys The external inventory system used to fetch item information.
+ */
     public Controller(Printer printer, ExternalInventorySystem invSys) {
         this.printer = printer;
         this.invSys  = invSys;
         this.currentSale    = new Sale();
     }
 
-
+ 
+ /**
+  * Adds a revenue observer to the list of observers. The observer will be notified
+  * of revenue changes in the current sale.
+  * @param obs The RevenueObserver to be added.
+  */
 public void addRevenueObserver(RevenueObserver obs) {
     revenueObservers.add(obs);
     if (currentSale != null) {

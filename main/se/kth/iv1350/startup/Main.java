@@ -7,7 +7,9 @@ import main.se.kth.iv1350.util.FileLogger;
 import main.se.kth.iv1350.view.TotalRevenueView;
 import main.se.kth.iv1350.view.View;
 
-
+/**
+ * Main class to start the application.
+ */
 public class Main {
     public static void main(String[] args) {
         Printer printer = new Printer();

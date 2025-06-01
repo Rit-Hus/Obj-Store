@@ -3,10 +3,17 @@ package main.se.kth.iv1350.integration;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Represents an external inventory system that provides item details.
+ * This class simulates fetching item data from an external source.
+ */
 public class ExternalInventorySystem {
     private static final ExternalInventorySystem INSTANCE = new ExternalInventorySystem();
-
+/**
+ * Returns the singleton instance of the ExternalInventorySystem.
+ *
+ * @return The singleton instance of ExternalInventorySystem.
+ * */
     public static ExternalInventorySystem getInstance() {
         return INSTANCE;
     }
@@ -25,6 +32,15 @@ public class ExternalInventorySystem {
             "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour"
         ));
     }
+
+    /**
+     * Fetches an ItemDTO from the inventory system based on the item ID and quantity.
+     * @param itemID The unique identifier of the item.
+     * @param quantity The quantity of the item to fetch.
+     * @return An ItemDTO containing the item's details.
+     * @throws ItemNotFoundException If the item with the specified ID is not found.
+     * @throws InventoryAccessException If there is an error accessing the inventory system.
+     */
 
     public ItemDTO fetchItemDTO(String itemID, int quantity)
             throws ItemNotFoundException, InventoryAccessException {

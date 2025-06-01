@@ -32,7 +32,10 @@ public class FileLogger extends AbstractRevenueObserver {
 
 
     
-
+    /* 
+     * Logs the current time and total income to the revenue log file.
+     * This method is called when the total income is updated.
+     */
     // Use this for logging exceptions
     public static void log(Exception e) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ERROR_LOG_FILE, true))) {

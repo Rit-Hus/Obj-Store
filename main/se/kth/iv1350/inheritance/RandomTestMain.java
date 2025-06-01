@@ -10,6 +10,7 @@ import main.se.kth.iv1350.inheritance.ComposedRandom;
  * Demonstrates the difference between inheritance and composition adaptation.
  */
 public class RandomTestMain {
+    
     public static void main(String[] args) {
         InheritedRandom inherited = new InheritedRandom();
         ComposedRandom composed = new ComposedRandom();
