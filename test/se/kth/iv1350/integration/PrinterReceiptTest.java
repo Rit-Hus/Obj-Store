@@ -16,11 +16,21 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+
+/**
+ * This class tests the functionality of the Printer class, specifically
+ * the print method which generates a receipt based on a SaleDTO object.
+ */
+
 public class PrinterReceiptTest {
     private final PrintStream originalOut = System.out;
     private ByteArrayOutputStream outBuffer;
     private Printer printer;
 
+    /**
+     * Sets up the test environment by redirecting System.out to a ByteArrayOutputStream
+     * to capture printed output, and initializes the Printer instance.
+     */
     @Before
     public void setUp() {
         outBuffer = new ByteArrayOutputStream();
@@ -28,11 +38,17 @@ public class PrinterReceiptTest {
         printer = new Printer();
     }
 
+    /**
+     * Restores the original System.out after each test to avoid interference
+     * with other tests or the application.
+     */
     @After
     public void tearDown() {
         System.setOut(originalOut);
     }
-
+/**
+ * Tests the print method of the Printer class to ensure that it correctly
+ * */
     @Test
     public void testPrint_receiptIncludesItemsAndTotals() {
 

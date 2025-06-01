@@ -29,6 +29,13 @@ public class Controller {
     private DiscountStrategy discountStrategy = new NoDiscountStrategy(); // default
     private final List<RevenueObserver> revenueObservers = new ArrayList<>();
 
+    /**
+     * Constructs a Controller object with the specified printer and inventory system.
+     *
+     * @param printer The printer used to print receipts.
+     * @param invSys  The external inventory system used to fetch item information.
+     */
+
     public Controller(Printer printer, ExternalInventorySystem invSys) {
         this.printer = printer;
         this.invSys  = invSys;
@@ -36,12 +43,23 @@ public class Controller {
         this.currentSale.setDiscountStrategy(discountStrategy);
     }
 
+    /**
+     * Sets the discount strategy to be used for the current sale.
+     *
+     * @param strategy The DiscountStrategy to be used.
+     */ 
+
     public void setDiscountStrategy(DiscountStrategy strategy) {
         this.discountStrategy = strategy;
         if (currentSale != null) {
             currentSale.setDiscountStrategy(strategy);
         }
     }
+
+    /**
+     * Starts a new sale by initializing a new Sale object and setting the discount strategy.
+     * It also adds all registered revenue observers to the current sale.
+     */
 
     public void startSale() {
         this.currentSale = new Sale();
@@ -54,7 +72,12 @@ public class Controller {
         System.out.println("Sale started at: " + currentSale.getSaleDate());
     }
 
-
+    /**
+     * Adds a revenue observer to the list of observers. The observer will be notified
+     * of any changes in the revenue during the sale.
+     *
+     * @param obs The RevenueObserver to be added.
+     */
 
     public void addRevenueObserver(RevenueObserver obs) {
     revenueObservers.add(obs);

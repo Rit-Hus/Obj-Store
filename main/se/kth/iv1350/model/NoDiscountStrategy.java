@@ -5,6 +5,9 @@ package main.se.kth.iv1350.model;
  */
 public class NoDiscountStrategy implements DiscountStrategy {
 
+/**
+ * Creates a new instance of NoDiscountStrategy.
+ */
     @Override
     public double applyDiscount(double basePrice, int quantity) {
         return basePrice * quantity;

@@ -16,7 +16,10 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
-
+/**
+ * This class tests the View class, ensuring it correctly interacts with the Controller
+ * and displays item details as expected.
+ */
 public class ViewTest {
     private final PrintStream originalOut = System.out;
     private final InputStream originalIn = System.in;
@@ -24,6 +27,11 @@ public class ViewTest {
 
     private View view;
     private Controller controller;
+
+        /**
+         * Sets up the test environment by initializing the View and Controller instances.
+         * Redirects System.out to capture output for verification.
+         */
 
     @Before
     public void setUp() {
@@ -38,11 +46,20 @@ public class ViewTest {
         view = new View(controller, printer);
     }
 
+        /**
+         * Cleans up the test environment by restoring System.out and System.in to their original streams.
+         */
+
     @After
     public void tearDown() {
         System.setOut(originalOut);
         System.setIn(originalIn);
     }
+
+        /**
+         * Tests that the View correctly prints item details when provided with a valid ItemDTO.
+         * It checks that all expected fields are printed to the output.
+         */
 
     @Test
     public void testPrintItemDetails_showsAllFields() {
@@ -71,6 +88,11 @@ public class ViewTest {
         assertTrue("Should print 'Item description: A test item'",
                 output.contains("Item description: A test item"));
     }
+
+        /**
+         * Tests that the View correctly runs and displays the menu options.
+         * It simulates user input to select an item by ID and checks that the output contains the expected prompts.
+         */
 
     @Test
     public void testRun_showsMenuAndHandlesInvalidID() {

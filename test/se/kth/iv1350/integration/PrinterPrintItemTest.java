@@ -11,12 +11,17 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
-
+/**
+ * This class tests the Printer class, specifically the printItemDetails method.
+ * It verifies that the method prints all expected lines to the console.
+ */
 public class PrinterPrintItemTest {
     private final PrintStream originalOut = System.out;
     private ByteArrayOutputStream outBuffer;
     private Printer printer;
-
+/**
+ * Sets up the test environment by redirecting System.out to a ByteArrayOutputStream.
+ */
     @Before
     public void setUp() {
         outBuffer = new ByteArrayOutputStream();
@@ -24,11 +29,19 @@ public class PrinterPrintItemTest {
         printer = new Printer();
     }
 
+/**
+ * Restores the original System.out after each test.
+ */
     @After
     public void tearDown() {
         System.setOut(originalOut);
     }
 
+/**
+ * Tests the printItemDetails method of the Printer class.
+ 
+ * @throws Exception if any unexpected error occurs during the test.
+ */
     @Test
     public void testPrintItemDetails_printsAllLines() {
         ItemDTO dto = new ItemDTO(
