@@ -11,9 +11,10 @@ import main.se.kth.iv1350.view.AbstractRevenueObserver;
 public class TotalRevenueFileOutput extends AbstractRevenueObserver {
     private static final String REVENUE_LOG_FILE = "revenue-log.log";
 
+    
     @Override
     protected void doShowTotalIncome() throws IOException {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(REVENUE_LOG_FILE, false))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(REVENUE_LOG_FILE, true))) {
             writer.println("Total revenue (file output): " + getTotalIncome() + " SEK");
         }
     }
