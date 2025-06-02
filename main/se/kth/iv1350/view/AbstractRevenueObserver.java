@@ -9,7 +9,7 @@ public abstract class AbstractRevenueObserver implements RevenueObserver {
     private int totalIncome = 0;
 
     @Override
-    public void onNewSale(double saleAmount) {
+    public final void onNewSale(double saleAmount) {
         calculateTotalIncome(saleAmount);
         showTotalIncome();
     }
