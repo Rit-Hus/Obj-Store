@@ -19,7 +19,12 @@ import java.util.Scanner;
 public class View {
     private final Controller controller;
     private final Printer printer;
-
+    /**
+     * Constructs a View instance with the specified controller and printer.
+     *
+     * @param controller The controller that handles the application's logic.
+     * @param printer    The printer used to format and print item details.
+     */
     public View(Controller controller, Printer printer) {
         this.controller = controller;
         this.printer = printer;

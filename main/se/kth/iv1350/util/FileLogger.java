@@ -31,9 +31,13 @@ public class FileLogger extends AbstractRevenueObserver {
     }
 
 
-    
+    /**
+     * Logs an error message to the error log file.
+     * @param e The exception to log.
+     * @throws IOException If an I/O error occurs while writing to the log file.
+     */
 
-    // Use this for logging exceptions
+        // Use this for logging exceptions
     public static void log(Exception e) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ERROR_LOG_FILE, true))) {
             writer.println("ERROR: " + e.toString());
